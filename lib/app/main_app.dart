@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:koin/koin.dart';
 import 'package:myzukrainy/app/app_module.dart';
 import 'package:myzukrainy/app/routes.dart';
+import 'package:myzukrainy/core/presentation/presentation_module.dart';
+import 'package:myzukrainy/core/presentation/screens/main_page/main_page.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
-
-import '../presentation/main_page/main_page.dart';
 
 class MainApp extends StatelessWidget {
   static Future launchApp() async {
@@ -33,6 +33,7 @@ class MainApp extends StatelessWidget {
       app.printLogger(level: Level.debug);
       app.modules([
         appModule,
+        presentationModule,
       ]);
     });
   }

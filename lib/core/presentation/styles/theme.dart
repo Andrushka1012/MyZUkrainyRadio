@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myzukrainy/presentation/styles/text_styles.dart';
+import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
 
 import 'colors.dart';
 import 'dimens.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myzukrainy/presentation/main_page/main_page.dart';
+import 'package:myzukrainy/core/presentation/screens/main_page/main_page.dart';
 
 final routes = <String, WidgetBuilder>{
   MainPage.routeName: (_) => MainPage(),
