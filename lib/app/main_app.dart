@@ -13,13 +13,13 @@ class MainApp extends StatelessWidget {
     runApp(
       EasyLocalization(
         supportedLocales: const [
-          Locale('ua', ''),
-          Locale('pl', ''),
+          Locale('uk'),
+          Locale('pl'),
         ],
         path: 'assets/translations',
         useOnlyLangCode: true,
         useFallbackTranslations: true,
-        fallbackLocale: const Locale('ua'),
+        fallbackLocale: const Locale('uk'),
         child: const MainApp(),
       ),
     );
