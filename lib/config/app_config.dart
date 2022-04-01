@@ -1,4 +1,4 @@
-import 'package:cis.myzukrainy/app/main_app.dart';
+import 'package:myzukrainy/app/main_app.dart';
 
 abstract class AppConfig {
   static late AppConfig value;

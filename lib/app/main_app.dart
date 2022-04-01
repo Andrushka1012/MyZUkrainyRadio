@@ -1,11 +1,28 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:koin/koin.dart';
-import 'package:cis.myzukrainy/app/app_module.dart';
+import 'package:myzukrainy/app/app_module.dart';
+import 'package:myzukrainy/generated/locale_keys.g.dart';
 
 class MainApp extends StatelessWidget {
-  static void launchApp() {
+  static Future launchApp() async {
     _initKoin();
-    runApp(const MainApp());
+    WidgetsFlutterBinding.ensureInitialized();
+    await EasyLocalization.ensureInitialized();
+    EasyLocalization.logger.enableLevels = [];
+    runApp(
+      EasyLocalization(
+        supportedLocales: const [
+          Locale('ua', ''),
+          Locale('pl', ''),
+        ],
+        path: 'assets/translations',
+        useOnlyLangCode: true,
+        useFallbackTranslations: true,
+        fallbackLocale: const Locale('ua'),
+        child: const MainApp(),
+      ),
+    );
   }
 
   static void _initKoin() {
@@ -24,16 +41,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -82,11 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -107,8 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              LocaleKeys.myZUkrainy.tr(),
             ),
             Text(
               '$_counter',

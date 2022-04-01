@@ -1,4 +1,4 @@
-name: cis.myzukrainy
+name: myzukrainy
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -21,6 +21,7 @@ dependencies:
   koin_bloc: 0.2.0-nullsafety.0
   shared_preferences: 2.0.13
   google_fonts: 2.3.1
+  easy_localization: 3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -30,5 +31,6 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
+    - assets/translations/
   uses-material-design: true
 
