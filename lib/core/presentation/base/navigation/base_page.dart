@@ -5,11 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// Abstract class for base ummadum page. Wrap page with a [BlocProvider] specified to this page
 @immutable
 abstract class BasePage<T extends BlocBase> extends StatelessWidget {
-  const BasePage()
+  BasePage({Key? key})
       : assert(
             T != Bloc,
             'Bloc type should be specified for BasePage.\n'
-            'Declare your page as class YOUR_PAGE_CLASS extends BasePage<YOUR_BLOC_TYPE>');
+            'Declare your page as class YOUR_PAGE_CLASS extends BasePage<YOUR_BLOC_TYPE>'),
+        super(key: key);
 
   /// Creates bloc specified to this page
   T createBloc();
