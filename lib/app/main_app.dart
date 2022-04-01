@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:koin/koin.dart';
+import 'package:my_z_ukrainy/app/app_module.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+class MainApp extends StatelessWidget {
+  static void launchApp() {
+    _initKoin();
+    runApp(const MainApp());
+  }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  static void _initKoin() {
+    startKoin((app) {
+      app.printLogger(level: Level.debug);
+      app.modules([
+        appModule,
+      ]);
+    });
+  }
+
+  const MainApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
