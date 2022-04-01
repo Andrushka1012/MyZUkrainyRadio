@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:koin/koin.dart';
-import 'package:my_z_ukrainy/app/app_module.dart';
+import 'package:cis.myzukrainy/app/app_module.dart';
 
 class MainApp extends StatelessWidget {
   static void launchApp() {

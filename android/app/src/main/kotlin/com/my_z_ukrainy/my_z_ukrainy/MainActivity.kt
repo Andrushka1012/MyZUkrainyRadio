@@ -1,4 +1,4 @@
-package com.my_z_ukrainy.my_z_ukrainy
+package com.cis.myzukrainy
 
 import io.flutter.embedding.android.FlutterActivity
 

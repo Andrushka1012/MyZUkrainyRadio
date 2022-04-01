@@ -1,4 +1,4 @@
-import 'package:my_z_ukrainy/app/main_app.dart';
+import 'package:cis.myzukrainy/app/main_app.dart';
 
 abstract class AppConfig {
   static late AppConfig value;

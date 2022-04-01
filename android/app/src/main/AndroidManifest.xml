@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.my_z_ukrainy.my_z_ukrainy">
+    package="com.cis.myzukrainy">
    <application
-        android:label="my_z_ukrainy"
+        android:label="cis.myzukrainy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
