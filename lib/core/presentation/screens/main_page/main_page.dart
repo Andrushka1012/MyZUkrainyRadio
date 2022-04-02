@@ -15,50 +15,52 @@ class MainPage extends KoinPage<MainPageCubit> {
   static const routeName = 'MainPage';
 
   @override
-  Widget buildPage(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.background,
-        body: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          child: SafeArea(
-            child: NestedScrollView(
-              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                return <Widget>[
-                  SliverAppBar(
-                    expandedHeight: kToolbarHeight * 3,
-                    backgroundColor: AppColors.mainPageHeaderColor,
-                    floating: false,
-                    pinned: false,
-                    flexibleSpace: FlexibleSpaceBar(
-                        centerTitle: false,
-                        background: Padding(
-                          padding: const EdgeInsets.only(left: Dimens.spanBig, top: kToolbarHeight),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: Dimens.spanBig),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                HomePageIntroText(),
-                                ShareButton(),
-                              ],
-                            ),
+  Widget buildPage(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: SafeArea(
+          child: NestedScrollView(
+            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                  expandedHeight: kToolbarHeight * 3,
+                  backgroundColor: AppColors.mainPageHeaderColor,
+                  floating: false,
+                  pinned: false,
+                  flexibleSpace: FlexibleSpaceBar(
+                      centerTitle: false,
+                      background: Padding(
+                        padding: const EdgeInsets.only(left: Dimens.spanBig, top: kToolbarHeight),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: Dimens.spanBig),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              HomePageIntroText(),
+                              ShareButton(),
+                            ],
                           ),
-                        )),
-                  ),
-                  SliverPersistentHeader(
-                    delegate: CommunitiesIntroHeaderDelegate(MediaQuery.of(context).padding.top),
-                    pinned: true,
-                  ),
-                ];
-              },
-              body: Padding(
-                padding: const EdgeInsets.only(top: Dimens.spanBig),
-                child: MainForm(),
-              ),
+                        ),
+                      )),
+                ),
+                SliverPersistentHeader(
+                  delegate: CommunitiesIntroHeaderDelegate(MediaQuery.of(context).padding.top),
+                  pinned: true,
+                ),
+              ];
+            },
+            body: Padding(
+              padding: const EdgeInsets.only(top: Dimens.spanBig),
+              child: MainForm(),
             ),
           ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 class MainForm extends StatelessWidget {

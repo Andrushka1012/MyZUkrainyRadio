@@ -32,9 +32,7 @@ class MainApp extends StatelessWidget {
 
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: AppColors.mainPageHeaderColor,
-    ));
+
     EasyLocalization.logger.enableLevels = [];
     runApp(
       EasyLocalization(
@@ -66,6 +64,11 @@ class MainApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: AppColors.mainPageHeaderColor,
+      systemNavigationBarColor: AppColors.white,
+    ));
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: LocaleKeys.myZUkrainy.tr(),
