@@ -34,7 +34,7 @@ class MiniPlayer extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        CoverDisc(56),
+                        CoverDisc(),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: Dimens.spanSmall),
                           child: Column(

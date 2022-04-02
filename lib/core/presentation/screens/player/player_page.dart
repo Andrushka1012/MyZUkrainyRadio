@@ -20,7 +20,7 @@ class PlayerForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CoverDisc(MediaQuery.of(context).size.width),
+      child: CoverDisc(size: MediaQuery.of(context).size.width),
     );
   }
 }
