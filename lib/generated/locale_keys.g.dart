@@ -5,5 +5,7 @@ abstract class  LocaleKeys {
   static const goodMorning = 'goodMorning';
   static const goodAfternoon = 'goodAfternoon';
   static const goodEvening = 'goodEvening';
+  static const shareMessage = 'shareMessage';
+  static const shareTitle = 'shareTitle';
 
 }

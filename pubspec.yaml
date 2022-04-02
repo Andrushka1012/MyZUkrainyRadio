@@ -24,6 +24,7 @@ dependencies:
   easy_localization: 3.0.0
   just_audio: 0.9.20
   audio_service: 0.18.4
+  flutter_share: 2.0.0
 
 dev_dependencies:
   flutter_test:
