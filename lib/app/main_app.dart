@@ -1,15 +1,32 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:koin/internals.dart';
 import 'package:koin/koin.dart';
 import 'package:myzukrainy/app/app_module.dart';
 import 'package:myzukrainy/app/routes.dart';
+import 'package:myzukrainy/config/app_config.dart';
+import 'package:myzukrainy/core/domain/player/audio_handler.dart';
 import 'package:myzukrainy/core/presentation/presentation_module.dart';
 import 'package:myzukrainy/core/presentation/screens/main_page/main_page.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 
 class MainApp extends StatelessWidget {
+
   static Future launchApp() async {
     _initKoin();
+
+    final audioHandler = await AudioService.init(
+      builder: () => AudioPlayerHandler(),
+      config: AudioServiceConfig(
+        androidNotificationChannelId: AppConfig.value.androidNotificationChannelId,
+        androidNotificationChannelName: 'Radio playback',
+        androidNotificationOngoing: true,
+      ),
+    );
+
+    KoinContextHandler.get().declare<AudioHandler>(audioHandler);
+
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
     EasyLocalization.logger.enableLevels = [];

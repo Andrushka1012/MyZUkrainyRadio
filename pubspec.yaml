@@ -22,7 +22,8 @@ dependencies:
   shared_preferences: 2.0.13
   google_fonts: 2.3.1
   easy_localization: 3.0.0
-  radio_player: 0.4.1
+  just_audio: 0.9.20
+  audio_service: 0.18.4
 
 dev_dependencies:
   flutter_test:
