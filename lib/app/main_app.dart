@@ -1,6 +1,7 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:koin/internals.dart';
 import 'package:koin/koin.dart';
 import 'package:myzukrainy/app/app_module.dart';
@@ -9,7 +10,9 @@ import 'package:myzukrainy/config/app_config.dart';
 import 'package:myzukrainy/core/domain/player/audio_handler.dart';
 import 'package:myzukrainy/core/presentation/presentation_module.dart';
 import 'package:myzukrainy/core/presentation/screens/main_page/main_page.dart';
+import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:myzukrainy/helpers/scroll_configuration.dart';
 
 class MainApp extends StatelessWidget {
 
@@ -29,6 +32,9 @@ class MainApp extends StatelessWidget {
 
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: AppColors.mainPageHeaderColor,
+    ));
     EasyLocalization.logger.enableLevels = [];
     runApp(
       EasyLocalization(
@@ -61,12 +67,19 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: LocaleKeys.myZUkrainy.tr(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       initialRoute: MainPage.routeName,
       routes: routes,
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: AppScrollBehavior(),
+          child: child ?? Container(),
+        );
+      },
       onGenerateRoute: (RouteSettings settings) => MaterialPageRoute(
         settings: settings,
         builder: (BuildContext context) {

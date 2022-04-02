@@ -10,5 +10,10 @@ class AppColors {
   static const gray = Color.fromRGBO(134, 136, 146, 1);
 
   //static const background = Color.fromRGBO(241, 246, 246, 1);
-  static const background = secondaryDark;
+  static const background = white;
+
+
+
+  static const mainPageHeaderColor = Color.fromRGBO(8, 6, 24, 1);
+  static const darkGray = Color.fromRGBO(52, 52, 68, 1);
 }

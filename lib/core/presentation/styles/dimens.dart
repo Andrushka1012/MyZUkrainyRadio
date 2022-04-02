@@ -5,8 +5,8 @@ class Dimens {
   static const spanMedium = 12.0;
   static const spanMediumBig = 14.0;
   static const spanBig = 16.0;
+  static const spanMediumLarge = 20.0;
   static const spanHuge = 24.0;
-  static const spanMediumLarge = 22.0;
   static const spanLarge = 32.0;
   static const spanSmallerGiant = 44.0;
   static const spanGiant = 48.0;
@@ -26,4 +26,7 @@ class Dimens {
   static const webConstraintsMinSize = 500.0;
   static const webConstraintsMaxHeight = 600.0;
   static const webConstraintsMaxWidth = 1000.0;
+
+
+  static const miniPlayerSize = 80.0;
 }
