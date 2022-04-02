@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class AppColors {
-  static const primary = Color.fromRGBO(34, 150, 243, 1);
+  static const primary = Color.fromRGBO(62, 56, 220, 1);
   static const secondary = Color.fromRGBO(43, 44, 62, 1);
   static const secondaryDark = Color.fromRGBO(32, 34, 49, 1);
   static const darkBlue = Color.fromRGBO(10, 26, 51, 1);

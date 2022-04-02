@@ -16,7 +16,7 @@ class ShareButton extends StatelessWidget {
           size: Dimens.spanMediumLarge,
           color: AppColors.white,
         ),
-        padding: EdgeInsets.all(15.0),
+        padding: EdgeInsets.all(Dimens.spanBig),
         shape: CircleBorder(),
       );
 

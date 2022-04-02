@@ -21,19 +21,21 @@ class AppTextStyles {
         color: AppColors.white,
       );
 
-  static TextStyle get headline2 => GoogleFonts.pattaya(
+  static TextStyle get headline2 => GoogleFonts.andika(
         fontSize: Dimens.fontSizeHeadline2,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
         color: AppColors.white,
       );
 
-  static TextStyle get headline2Yanone => GoogleFonts.yanoneKaffeesatz(
+  static TextStyle get headline2w700 => GoogleFonts.andika(
         fontSize: Dimens.fontSizeHeadline2,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w700,
         letterSpacing: 0.1,
         color: AppColors.white,
       );
+
+
 
   static TextStyle get headline3 => GoogleFonts.pattaya(
         fontSize: Dimens.fontSizeHeadline3,
@@ -49,42 +51,42 @@ class AppTextStyles {
         color: AppColors.white,
       );
 
-  static TextStyle get overline => GoogleFonts.yanoneKaffeesatz(
+  static TextStyle get overline => GoogleFonts.play(
         fontSize: Dimens.fontSizeOverline,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.1,
         color: AppColors.white,
       );
 
-  static TextStyle get bodyText1 => GoogleFonts.yanoneKaffeesatz(
+  static TextStyle get bodyText1 => GoogleFonts.play(
         fontSize: Dimens.fontSizeBodyText1,
         fontWeight: FontWeight.w400,
         letterSpacing: 0,
         color: AppColors.white,
       );
 
-  static TextStyle get bodyText1w500 => GoogleFonts.yanoneKaffeesatz(
+  static TextStyle get bodyText1w500 => GoogleFonts.play(
         fontSize: Dimens.fontSizeBodyText1,
         fontWeight: FontWeight.w500,
         letterSpacing: 0,
         color: AppColors.white,
       );
 
-  static TextStyle get bodyText2 => GoogleFonts.yanoneKaffeesatz(
+  static TextStyle get bodyText2 => GoogleFonts.play(
         fontSize: Dimens.fontSizeBodyText2,
         fontWeight: FontWeight.normal,
         letterSpacing: 0,
         color: AppColors.white,
       );
 
-  static TextStyle get bodyText2w500 => GoogleFonts.yanoneKaffeesatz(
+  static TextStyle get bodyText2w500 => GoogleFonts.play(
         fontSize: Dimens.fontSizeBodyText2,
         fontWeight: FontWeight.w500,
         letterSpacing: 0,
         color: AppColors.white,
       );
 
-  static TextStyle get caption => GoogleFonts.yanoneKaffeesatz(
+  static TextStyle get caption => GoogleFonts.play(
         fontSize: Dimens.fontSizeCaption,
         fontWeight: FontWeight.normal,
         letterSpacing: 0,
