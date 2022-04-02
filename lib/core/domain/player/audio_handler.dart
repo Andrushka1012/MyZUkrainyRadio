@@ -1,13 +1,18 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:myzukrainy/config/app_config.dart';
+import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AudioPlayerHandler extends BaseAudioHandler {
   static final _item = MediaItem(
-      id: AppConfig.value.streamUrl,
-      title: 'My z Ukrainy',
-      artist: '🇵🇱 ❤️ 🇺🇦',
-      artUri: Uri.file('assets/images/cover_white.jpg'));
+    id: AppConfig.value.streamUrl,
+    title: 'My z Ukrainy',
+    artist: '🇵🇱 ❤️ 🇺🇦',
+    artUri: Uri.parse(
+      'https://raw.githubusercontent.com/Andrushka1012/MyZUkrainyRadio/main/assets/images/cover_white.jpg',
+    ),
+  );
 
   AudioPlayerHandler() {
     player.setUrl(_item.id);
