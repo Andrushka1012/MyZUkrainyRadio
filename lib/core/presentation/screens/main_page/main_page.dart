@@ -26,7 +26,7 @@ class MainPage extends KoinPage<MainPageCubit> {
               return <Widget>[
                 SliverAppBar(
                   expandedHeight: kToolbarHeight * 3,
-                  backgroundColor: AppColors.mainPageHeaderColor,
+                  backgroundColor: AppColors.headerColor,
                   floating: false,
                   pinned: false,
                   flexibleSpace: FlexibleSpaceBar(

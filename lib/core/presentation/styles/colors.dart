@@ -13,7 +13,7 @@ class AppColors {
 
 
 
-  static const mainPageHeaderColor = Color.fromRGBO(8, 6, 24, 1);
+  static const headerColor = Color.fromRGBO(8, 6, 24, 1);
   static const mainPageHeaderColorAlpha1 = Color.fromRGBO(8, 6, 24, 0.2);
   static const mainPageHeaderColorAlpha2 = Color.fromRGBO(8, 6, 24, 0.45);
   static const darkGray = Color.fromRGBO(52, 52, 68, 1);
