@@ -67,13 +67,6 @@ class _CoverDiscState extends State<CoverDisc> with SingleTickerProviderStateMix
                 Align(
                   alignment: Alignment.center,
                   child: _CircleItem(
-                    radius: radius / 6.9,
-                    color: AppColors.headerColor,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: _CircleItem(
                     radius: radius / 5.3,
                     color: AppColors.mainPageHeaderColorAlpha2,
                   ),
@@ -100,6 +93,13 @@ class _CoverDiscState extends State<CoverDisc> with SingleTickerProviderStateMix
                     radius: radius / 1.06,
                     color: AppColors.mainPageHeaderColorAlpha1,
                     width: radius / 70,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: _CircleItem(
+                    radius: radius / 6.9,
+                    color: AppColors.headerColor,
                   ),
                 ),
               ],
