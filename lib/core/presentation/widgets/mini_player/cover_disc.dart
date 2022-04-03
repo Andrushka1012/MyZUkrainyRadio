@@ -28,7 +28,6 @@ class _CoverDiscState extends State<CoverDisc> with SingleTickerProviderStateMix
   @override
   void initState() {
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 5000),
       vsync: this,
       value: _playerController.rotationState,
     );

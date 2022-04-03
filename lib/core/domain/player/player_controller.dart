@@ -4,8 +4,8 @@ import 'package:audio_service/audio_service.dart';
 
 class PlayerController {
   PlayerController(this._audioHandler) {
-    playbackStateStream.listen((event) {
-      if (event.playing) {
+    isPlayingStream.listen((isPlaying) {
+      if (isPlaying) {
         _resetTimer();
       } else {
         _rotationTimer?.cancel();
@@ -20,6 +20,8 @@ class PlayerController {
   final StreamController<double> rotationStream = StreamController.broadcast();
 
   Stream<PlaybackState> get playbackStateStream => _audioHandler.playbackState;
+
+  Stream<bool> get isPlayingStream => playbackStateStream.map((state) => state.playing).distinct();
 
   void play() {
     _audioHandler.play();

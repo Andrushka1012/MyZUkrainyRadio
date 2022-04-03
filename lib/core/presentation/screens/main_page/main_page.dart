@@ -70,7 +70,7 @@ class MainForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: 700,
         child: Center(
           child: Text('Tu ma być jakiś zajebisty content, ale go nie ma :P'),

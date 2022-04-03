@@ -25,6 +25,10 @@ dependencies:
   just_audio: 0.9.20
   audio_service: 0.18.4
   flutter_share: 2.0.0
+  lottie: 1.2.2
+  rxdart: 0.27.3
+  sleek_circular_slider: 2.0.1
+  volume_controller: 2.0.3
 
 dev_dependencies:
   flutter_test:
