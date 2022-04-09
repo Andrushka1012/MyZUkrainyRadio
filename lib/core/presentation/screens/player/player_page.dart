@@ -42,10 +42,6 @@ class PlayerForm extends StatelessWidget {
               children: [
                 CircleBackButton(),
                 Spacer(),
-                CircleButton(
-                  icon: Icons.timer_outlined,
-                  onTap: () {},
-                ),
                 CircleShareButton(),
               ],
             ),
@@ -64,10 +60,12 @@ class PlayerForm extends StatelessWidget {
             ),
             Text('🇵🇱 ❤️ 🇺🇦'),
             _StreamAnimation(),
+            Spacer(),
             Center(
                 child: PlayPauseButton(
               size: Dimens.spanGiant,
             )),
+            SizedBox(height: Dimens.spanBig,)
           ],
         ),
       ),
@@ -176,57 +174,60 @@ class _VolumeControllerWithCoverState extends State<_VolumeControllerWithCover> 
             ),
             Align(
               alignment: Alignment.center,
-              child: SleekCircularSlider(
-                appearance: CircularSliderAppearance(
-                  startAngle: 0,
-                  angleRange: 180,
-                  size: widget.size,
-                  animationEnabled: false,
-                  counterClockwise: false,
-                  customWidths: CustomSliderWidths(
-                    progressBarWidth: 12,
-                    handlerSize: 12,
-                    trackWidth: 6,
+              child: Transform.rotate(
+                angle: 180 * 3.14 / 180,
+                child: SleekCircularSlider(
+                  appearance: CircularSliderAppearance(
+                    startAngle: 0,
+                    angleRange: 180,
+                    size: widget.size,
+                    animationEnabled: false,
+                    counterClockwise: true,
+                    customWidths: CustomSliderWidths(
+                      progressBarWidth: 12,
+                      handlerSize: 12,
+                      trackWidth: 6,
+                    ),
+                    customColors: CustomSliderColors(
+                        dotColor: AppColors.white,
+                        dynamicGradient: false,
+                        trackColor: AppColors.grayTrack,
+                        progressBarColors: [
+                          Colors.yellow,
+                          Colors.yellow,
+                          Colors.yellow,
+                          Colors.blue,
+                          Colors.blue,
+                          Colors.blue,
+                        ]),
                   ),
-                  customColors: CustomSliderColors(
-                      dotColor: AppColors.white,
-                      dynamicGradient: false,
-                      trackColor: AppColors.grayTrack,
-                      progressBarColors: [
-                        Colors.yellow,
-                        Colors.yellow,
-                        Colors.yellow,
-                        Colors.blue,
-                        Colors.blue,
-                        Colors.blue,
-                      ]),
+                  max: 1,
+                  initialValue: _volumeLevel,
+                  innerWidget: (_) => Container(),
+                  min: 0,
+                  onChange: (newValue) {
+                    _listenForVolumeChanges = false;
+                    _volumeController.setVolume(newValue, showSystemUI: false);
+                    _listenForVolumeChangesTimer?.cancel();
+                    _listenForVolumeChangesTimer = Timer(Duration(milliseconds: 200), () {
+                      _listenForVolumeChanges = true;
+                    });
+                  },
                 ),
-                max: 1,
-                initialValue: _volumeLevel,
-                innerWidget: (_) => Container(),
-                min: 0,
-                onChange: (newValue) {
-                  _listenForVolumeChanges = false;
-                  _volumeController.setVolume(newValue, showSystemUI: false);
-                  _listenForVolumeChangesTimer?.cancel();
-                  _listenForVolumeChangesTimer = Timer(Duration(milliseconds: 200), () {
-                    _listenForVolumeChanges = true;
-                  });
-                },
               ),
             ),
             Align(
               alignment: Alignment(-1.04, -0.2),
               child: Icon(
-                Icons.volume_up_rounded,
-                color: AppColors.white,
+                Icons.volume_off_rounded,
+                color: AppColors.gray,
               ),
             ),
             Align(
               alignment: Alignment(1.04, -0.2),
               child: Icon(
-                Icons.volume_off_rounded,
-                color: AppColors.gray,
+                Icons.volume_up_rounded,
+                color: AppColors.white,
               ),
             ),
           ],

@@ -8,7 +8,7 @@ import 'dimens.dart';
 class AppTextStyles {
   // Core styles
   static TextStyle get headline => GoogleFonts.pattaya(
-        fontSize: 70,
+        fontSize: 60,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.36,
         color: AppColors.white,
