@@ -7,6 +7,12 @@ import 'dimens.dart';
 
 class AppTextStyles {
   // Core styles
+  static TextStyle get headline => GoogleFonts.pattaya(
+        fontSize: 70,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.36,
+        color: AppColors.white,
+      );
   static TextStyle get headline0 => GoogleFonts.pattaya(
         fontSize: Dimens.fontSizeHeadline0,
         fontWeight: FontWeight.w500,
@@ -18,14 +24,12 @@ class AppTextStyles {
         fontSize: Dimens.fontSizeHeadline1,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
-        color: AppColors.white,
       );
 
   static TextStyle get headline2 => GoogleFonts.andika(
         fontSize: Dimens.fontSizeHeadline2,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
-        color: AppColors.white,
       );
 
   static TextStyle get headline2w700 => GoogleFonts.andika(
@@ -41,7 +45,6 @@ class AppTextStyles {
         fontSize: Dimens.fontSizeHeadline3,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
-        color: AppColors.white,
       );
 
   static TextStyle get headline4 => GoogleFonts.pattaya(

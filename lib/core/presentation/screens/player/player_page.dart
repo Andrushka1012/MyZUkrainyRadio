@@ -59,7 +59,7 @@ class PlayerForm extends StatelessWidget {
               ),
               child: Text(
                 LocaleKeys.myZUkrainy.tr(),
-                style: AppTextStyles.headline0,
+                style: AppTextStyles.headline,
               ),
             ),
             Text('🇵🇱 ❤️ 🇺🇦'),

@@ -7,6 +7,8 @@ import 'package:koin/koin.dart';
 import 'package:myzukrainy/app/app_module.dart';
 import 'package:myzukrainy/app/routes.dart';
 import 'package:myzukrainy/config/app_config.dart';
+import 'package:myzukrainy/core/data/data_module.dart';
+import 'package:myzukrainy/core/domain/domain_module.dart';
 import 'package:myzukrainy/core/domain/player/audio_handler.dart';
 import 'package:myzukrainy/core/presentation/presentation_module.dart';
 import 'package:myzukrainy/core/presentation/screens/main_page/main_page.dart';
@@ -15,7 +17,6 @@ import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:myzukrainy/helpers/scroll_configuration.dart';
 
 class MainApp extends StatelessWidget {
-
   static Future launchApp() async {
     _initKoin();
 
@@ -55,6 +56,8 @@ class MainApp extends StatelessWidget {
       app.modules([
         appModule,
         presentationModule,
+        dataModule,
+        domainModule,
       ]);
     });
   }

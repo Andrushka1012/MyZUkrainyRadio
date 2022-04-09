@@ -1,18 +1,26 @@
-import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:koin_flutter/koin_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
 import 'package:myzukrainy/core/presentation/screens/main_page/widgets/home_page_header_delegate.dart';
 import 'package:myzukrainy/core/presentation/screens/main_page/widgets/home_page_intro_text.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
+import 'package:myzukrainy/core/presentation/widgets/progress_container.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
+import 'package:myzukrainy/core/presentation/widgets/word_press/word_press_post_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'bloc/main_page_cubit.dart';
 
 class MainPage extends KoinPage<MainPageCubit> {
   static const routeName = 'MainPage';
+
+  @override
+  void initBloc(MainPageCubit bloc) {
+    bloc.init();
+    super.initBloc(bloc);
+  }
 
   @override
   Widget buildPage(BuildContext context) {
@@ -64,18 +72,39 @@ class MainPage extends KoinPage<MainPageCubit> {
 }
 
 class MainForm extends StatelessWidget {
-
-  late final AudioHandler _audioHandler = get();
-
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SizedBox(
-        height: 700,
-        child: Center(
-          child: Text('Tu ma być jakiś zajebisty content, ale go nie ma :P'),
+  Widget build(BuildContext context) => BlocConsumer<MainPageCubit, MainPageState>(
+        listener: _handleEvents,
+        buildWhen: (_, current) => current is MainPageProcessing || current is MainPageDefault,
+        builder: (ctx, state) => ProgressContainer(
+          isProcessing: state is MainPageProcessing,
+          child: state is MainPageDefault
+              ? ListView(
+                  children: [
+                    SizedBox(
+                      height: Dimens.spanBig,
+                    ),
+                    ...state.posts
+                        .map(
+                          (post) => Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: Dimens.spanMedium),
+                            child: WordPressPostItem(
+                              post: post,
+                              onTap: () => launch(post.postUrl),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    SizedBox(
+                      height: Dimens.spanBig,
+                    ),
+                  ],
+                )
+              : Container(),
         ),
-      ),
-    );
+      );
+
+  void _handleEvents(BuildContext context, MainPageState state) {
+    // TODO: handle errors
   }
 }

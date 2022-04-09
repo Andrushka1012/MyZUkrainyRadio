@@ -22,14 +22,7 @@ class CommunitiesIntroHeader extends StatelessWidget {
               child: Container(
                 color: AppColors.headerColor,
               )),
-          Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: Container(
-                height: Dimens.miniPlayerSize / 2,
-                color: AppColors.background,
-              )),
+
           Positioned(
             left: 0,
             right: 0,

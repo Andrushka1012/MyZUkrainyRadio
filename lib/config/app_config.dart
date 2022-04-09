@@ -4,6 +4,7 @@ abstract class AppConfig {
   static late AppConfig value;
 
   abstract final String streamUrl;
+  abstract final String baseUrl;
   abstract final String androidNotificationChannelId;
 
   AppConfig() {
