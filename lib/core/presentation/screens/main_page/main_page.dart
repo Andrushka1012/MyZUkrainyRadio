@@ -28,43 +28,51 @@ class MainPage extends KoinPage<MainPageCubit> {
       backgroundColor: AppColors.background,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
-        child: SafeArea(
-          child: NestedScrollView(
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverAppBar(
-                  expandedHeight: kToolbarHeight * 3,
-                  backgroundColor: AppColors.headerColor,
-                  floating: false,
-                  pinned: false,
-                  flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: false,
-                      background: Padding(
-                        padding: const EdgeInsets.only(left: Dimens.spanBig, top: kToolbarHeight),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: Dimens.spanBig),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              HomePageIntroText(),
-                              ShareButton(),
-                            ],
-                          ),
-                        ),
-                      )),
-                ),
-                SliverPersistentHeader(
-                  delegate: CommunitiesIntroHeaderDelegate(MediaQuery.of(context).padding.top),
-                  pinned: true,
-                ),
-              ];
-            },
-            body: Padding(
-              padding: const EdgeInsets.only(top: Dimens.spanBig),
-              child: MainForm(),
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).padding.top,
+              color: AppColors.headerColor,
             ),
-          ),
+            Expanded(
+              child: NestedScrollView(
+                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    SliverAppBar(
+                      expandedHeight: kToolbarHeight * 2,
+                      backgroundColor: AppColors.headerColor,
+                      floating: false,
+                      pinned: false,
+                      flexibleSpace: FlexibleSpaceBar(
+                          centerTitle: false,
+                          background: Padding(
+                            padding: const EdgeInsets.only(left: Dimens.spanBig, top: kToolbarHeight),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: Dimens.spanBig),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  HomePageIntroText(),
+                                  ShareButton(),
+                                ],
+                              ),
+                            ),
+                          )),
+                    ),
+                    SliverPersistentHeader(
+                      delegate: CommunitiesIntroHeaderDelegate(MediaQuery.of(context).padding.top),
+                      pinned: true,
+                    ),
+                  ];
+                },
+                body: Padding(
+                  padding: const EdgeInsets.only(top: Dimens.spanBig),
+                  child: MainForm(),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -80,10 +88,8 @@ class MainForm extends StatelessWidget {
           isProcessing: state is MainPageProcessing,
           child: state is MainPageDefault
               ? ListView(
+            padding: EdgeInsets.zero,
                   children: [
-                    SizedBox(
-                      height: Dimens.spanBig,
-                    ),
                     ...state.posts
                         .map(
                           (post) => Padding(
@@ -93,12 +99,12 @@ class MainForm extends StatelessWidget {
                               onTap: () => launch(post.postUrl),
                             ),
                           ),
-                        )
-                        .toList(),
-                    SizedBox(
-                      height: Dimens.spanBig,
-                    ),
-                  ],
+              )
+                  .toList(),
+              SizedBox(
+                height: Dimens.spanBig,
+              ),
+            ],
                 )
               : Container(),
         ),

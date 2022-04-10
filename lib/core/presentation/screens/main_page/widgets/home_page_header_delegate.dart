@@ -27,12 +27,7 @@ class CommunitiesIntroHeader extends StatelessWidget {
             left: 0,
             right: 0,
             bottom: 0,
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: topPadding,
-              ),
-              child: MiniPlayer(),
-            ),
+            child: MiniPlayer(),
           ),
         ],
       ),
@@ -46,10 +41,10 @@ class CommunitiesIntroHeaderDelegate extends SliverPersistentHeaderDelegate {
   final double topPadding;
 
   @override
-  double get minExtent => topPadding + Dimens.miniPlayerSize;
+  double get minExtent => Dimens.miniPlayerSize;
 
   @override
-  double get maxExtent => topPadding + Dimens.miniPlayerSize ;
+  double get maxExtent =>  Dimens.miniPlayerSize ;
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
