@@ -32,10 +32,10 @@ class WordPressPostItem extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 1.65,
                 child: FadeInImage(
-                  image: (post.imageSrc != null
+                  image: (post.imageSrc?.isNotEmpty == true
                       ? NetworkImage(post.imageSrc!)
                       : AssetImage('assets/images/cover_white.jpg')) as ImageProvider,
-                  fit: BoxFit.fill,
+                  fit: post.imageSrc?.isNotEmpty == true ? BoxFit.fill : BoxFit.cover,
                   placeholder: MemoryImage(base64Decode(blankImageBytes)),
                 ),
               ),
