@@ -3,6 +3,13 @@ import 'dart:async';
 import 'package:audio_service/audio_service.dart';
 import 'package:myzukrainy/helpers/app_connectivity.dart';
 
+enum ControllerResult {
+  processing,
+  noInternet,
+  offline,
+  live,
+}
+
 class PlayerController {
   PlayerController(this._audioHandler, this._appConnectivity) {
     _appConnectivity.initialise();
@@ -13,12 +20,19 @@ class PlayerController {
         _rotationTimer?.cancel();
       }
     });
+
+    _appConnectivity.connectionStream.listen((hasConnection) {
+      if (!hasConnection) {
+        _stop();
+      }
+    });
   }
 
   final AudioHandler _audioHandler;
   final AppConnectivity _appConnectivity;
 
   double rotationState = 0.0;
+  bool _proccessing = false;
   Timer? _rotationTimer;
   final StreamController<double> rotationStream = StreamController.broadcast();
 
@@ -26,26 +40,38 @@ class PlayerController {
 
   Stream<bool> get isPlayingStream => playbackStateStream.map((state) => state.playing).distinct();
 
-  void play() {
+  void _play() {
     _audioHandler.play();
   }
 
-  void pause() {
+  void _pause() {
     _audioHandler.pause();
   }
 
-  Future playPause() async {
-    final isLive = await _appConnectivity.checkIsLive();
+  void _stop() {
+    _audioHandler.stop();
+  }
 
-    if (isLive) {
+  Future<ControllerResult> playPause() async {
+    if (_proccessing) return ControllerResult.processing;
+    _proccessing = true;
+
+    final isLiveState = await _appConnectivity.checkIsLive();
+
+    if (isLiveState == ControllerResult.live) {
       if (_audioHandler.playbackState.value.playing) {
-        pause();
+        _pause();
       } else {
-        play();
+        _play();
       }
+
+      _proccessing = false;
     } else {
-      _audioHandler.stop();
+      _stop();
+      _proccessing = false;
     }
+
+    return isLiveState;
   }
 
   void _resetTimer() {

@@ -12,6 +12,4 @@ class Test extends AppConfig {
   @override
   String get baseUrl => 'https://www.myzukrainy.pl';
 
-  @override
-  bool get checkIsLive => false;
 }

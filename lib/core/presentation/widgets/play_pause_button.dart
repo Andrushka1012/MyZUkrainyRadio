@@ -15,7 +15,7 @@ class PlayPauseButton extends StatelessWidget {
       stream: _playerController.isPlayingStream,
       builder: (context, snapshot) {
         return RawMaterialButton(
-          onPressed: _playerController.playPause,
+          onPressed: _playPause,
           elevation: 2.0,
           fillColor: AppColors.primary,
           child: Icon(
@@ -27,4 +27,11 @@ class PlayPauseButton extends StatelessWidget {
           shape: CircleBorder(),
         );
       });
+
+  Future _playPause() async {
+    final isLiveState = await _playerController.playPause();
+
+    print(isLiveState);
+    // TODO: handle error
+  }
 }

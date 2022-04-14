@@ -6,7 +6,6 @@ abstract class AppConfig {
   abstract final String streamUrl;
   abstract final String baseUrl;
   abstract final String androidNotificationChannelId;
-  abstract final bool checkIsLive;
 
   AppConfig() {
     value = this;

@@ -4,12 +4,13 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:myzukrainy/config/app_config.dart';
+import 'package:myzukrainy/core/domain/player/player_controller.dart';
 
 class AppConnectivity {
   final _connectivity = Connectivity();
-  final _controller = StreamController.broadcast();
+  final StreamController<bool> _controller = StreamController.broadcast();
 
-  Stream get myStream => _controller.stream;
+  Stream<bool> get connectionStream => _controller.stream;
 
   void initialise() async {
     ConnectivityResult result = await _connectivity.checkConnectivity();
@@ -27,14 +28,18 @@ class AppConnectivity {
     } on SocketException catch (_) {
       isOnline = false;
     }
-    _controller.sink.add({result: isOnline});
+    _controller.sink.add(isOnline);
   }
 
-  Future<bool> checkIsLive() async {
-    if (!AppConfig.value.checkIsLive) return true;
+  Future<ControllerResult> checkIsLive() async {
+    try {
+      var request = http.MultipartRequest("GET", Uri.parse(AppConfig.value.streamUrl));
+      final streamedResponse = await request.send();
 
-    final response = await http.get(Uri.parse(AppConfig.value.streamUrl));
-    return response.statusCode < 400;
+      return streamedResponse.statusCode < 400 ? ControllerResult.live : ControllerResult.offline;
+    } catch (e) {
+      return ControllerResult.noInternet;
+    }
   }
 
   void disposeStream() => _controller.close();
