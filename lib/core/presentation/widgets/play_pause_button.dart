@@ -15,7 +15,7 @@ class PlayPauseButton extends StatelessWidget {
       stream: _playerController.isPlayingStream,
       builder: (context, snapshot) {
         return RawMaterialButton(
-          onPressed: snapshot.data == true ? _playerController.pause : _playerController.play,
+          onPressed: _playerController.playPause,
           elevation: 2.0,
           fillColor: AppColors.primary,
           child: Icon(

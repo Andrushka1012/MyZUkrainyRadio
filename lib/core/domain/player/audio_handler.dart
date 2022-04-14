@@ -1,8 +1,6 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:myzukrainy/config/app_config.dart';
-import 'package:myzukrainy/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class AudioPlayerHandler extends BaseAudioHandler {
   static final _item = MediaItem(
@@ -43,15 +41,13 @@ class AudioPlayerHandler extends BaseAudioHandler {
   PlaybackState _transformEvent(PlaybackEvent event) {
     return PlaybackState(
       controls: [
-        MediaControl.rewind,
         if (player.playing) MediaControl.pause else MediaControl.play,
         MediaControl.stop,
-        MediaControl.fastForward,
       ],
       systemActions: const {
         MediaAction.playPause,
       },
-      androidCompactActionIndices: const [1],
+      androidCompactActionIndices: const [0],
       processingState: const {
         ProcessingState.idle: AudioProcessingState.idle,
         ProcessingState.loading: AudioProcessingState.loading,

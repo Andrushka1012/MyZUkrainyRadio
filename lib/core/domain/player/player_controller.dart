@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:audio_service/audio_service.dart';
+import 'package:myzukrainy/helpers/app_connectivity.dart';
 
 class PlayerController {
-  PlayerController(this._audioHandler) {
+  PlayerController(this._audioHandler, this._appConnectivity) {
+    _appConnectivity.initialise();
     isPlayingStream.listen((isPlaying) {
       if (isPlaying) {
         _resetTimer();
@@ -14,6 +16,7 @@ class PlayerController {
   }
 
   final AudioHandler _audioHandler;
+  final AppConnectivity _appConnectivity;
 
   double rotationState = 0.0;
   Timer? _rotationTimer;
@@ -29,6 +32,20 @@ class PlayerController {
 
   void pause() {
     _audioHandler.pause();
+  }
+
+  Future playPause() async {
+    final isLive = await _appConnectivity.checkIsLive();
+
+    if (isLive) {
+      if (_audioHandler.playbackState.value.playing) {
+        pause();
+      } else {
+        play();
+      }
+    } else {
+      _audioHandler.stop();
+    }
   }
 
   void _resetTimer() {

@@ -26,9 +26,9 @@ class MainApp extends StatelessWidget {
         androidNotificationChannelId: AppConfig.value.androidNotificationChannelId,
         androidNotificationChannelName: 'Radio playback',
         androidNotificationOngoing: true,
+        androidShowNotificationBadge: true,
       ),
     );
-
     KoinContextHandler.get().declare<AudioHandler>(audioHandler);
 
     WidgetsFlutterBinding.ensureInitialized();
