@@ -10,7 +10,7 @@ class AppConnectivity {
   final _connectivity = Connectivity();
   final StreamController<bool> _controller = StreamController.broadcast();
 
-  Stream<bool> get connectionStream => _controller.stream;
+  Stream<bool> get connectionStream => _controller.stream.distinct();
 
   void initialise() async {
     ConnectivityResult result = await _connectivity.checkConnectivity();
@@ -23,7 +23,7 @@ class AppConnectivity {
   void _checkStatus(ConnectivityResult result) async {
     bool isOnline = false;
     try {
-      final result = await InternetAddress.lookup(AppConfig.value.streamUrl);
+      final result = await InternetAddress.lookup('example.com');
       isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
     } on SocketException catch (_) {
       isOnline = false;
@@ -37,7 +37,7 @@ class AppConnectivity {
       final streamedResponse = await request.send();
 
       return streamedResponse.statusCode < 400 ? ControllerResult.live : ControllerResult.offline;
-    } catch (e) {
+    } catch (_) {
       return ControllerResult.noInternet;
     }
   }

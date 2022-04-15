@@ -7,5 +7,9 @@ abstract class  LocaleKeys {
   static const goodEvening = 'goodEvening';
   static const shareMessage = 'shareMessage';
   static const shareTitle = 'shareTitle';
+  static const radioOfflineMessage = 'radioOfflineMessage';
+  static const noInternetMessage = 'noInternetMessage';
+  static const somethingWentWrong = 'somethingWentWrong';
+  static const retryTitle = 'retryTitle';
 
 }

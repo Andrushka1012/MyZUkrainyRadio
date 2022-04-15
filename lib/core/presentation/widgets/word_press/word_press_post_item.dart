@@ -35,7 +35,7 @@ class WordPressPostItem extends StatelessWidget {
                   image: (post.imageSrc?.isNotEmpty == true
                       ? NetworkImage(post.imageSrc!)
                       : AssetImage('assets/images/cover_white.jpg')) as ImageProvider,
-                  fit: post.imageSrc?.isNotEmpty == true ? BoxFit.fill : BoxFit.cover,
+                  fit: BoxFit.cover,
                   placeholder: MemoryImage(base64Decode(blankImageBytes)),
                 ),
               ),

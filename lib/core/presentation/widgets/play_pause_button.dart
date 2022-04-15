@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:koin_flutter/koin_flutter.dart';
 import 'package:myzukrainy/core/domain/player/player_controller.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
+import 'package:myzukrainy/generated/locale_keys.g.dart';
 
 class PlayPauseButton extends StatelessWidget {
   PlayPauseButton({required this.size});
@@ -15,7 +17,7 @@ class PlayPauseButton extends StatelessWidget {
       stream: _playerController.isPlayingStream,
       builder: (context, snapshot) {
         return RawMaterialButton(
-          onPressed: _playPause,
+          onPressed: () => _playPause(context),
           elevation: 2.0,
           fillColor: AppColors.primary,
           child: Icon(
@@ -28,10 +30,30 @@ class PlayPauseButton extends StatelessWidget {
         );
       });
 
-  Future _playPause() async {
+  Future _playPause(BuildContext context) async {
     final isLiveState = await _playerController.playPause();
+    String? errorMessage;
 
-    print(isLiveState);
-    // TODO: handle error
+    switch (isLiveState) {
+      case ControllerResult.noInternet:
+        errorMessage = LocaleKeys.noInternetMessage;
+        break;
+      case ControllerResult.offline:
+        errorMessage = LocaleKeys.radioOfflineMessage;
+        break;
+      default:
+        break;
+    }
+
+    if (errorMessage != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: AppColors.headerColor,
+          content: Text(
+            errorMessage.tr(),
+          ),
+        ),
+      );
+    }
   }
 }

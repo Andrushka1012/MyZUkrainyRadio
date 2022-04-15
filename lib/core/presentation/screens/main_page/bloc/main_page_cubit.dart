@@ -11,6 +11,7 @@ class MainPageCubit extends Cubit<MainPageState> {
   final WordPressUseCase _wordPressUseCase;
 
   Future init() async {
+    emit(MainPageProcessing());
     final postsResponse = await _wordPressUseCase.getNews();
 
     if (postsResponse.isSuccessful) {

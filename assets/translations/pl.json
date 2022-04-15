@@ -4,5 +4,9 @@
   "goodAfternoon": "Dzień dobry",
   "goodEvening": "Dobry wieczór",
   "shareMessage": "Jakieś linki do strony i do sklepu",
-  "shareTitle": "Podziel się nami z wszystkimi"
+  "shareTitle": "Podziel się nami z wszystkimi",
+  "radioOfflineMessage": "Niestety obecnie nie ma połączenia z naszą stacją radiową. Spróbuj ponownie później.",
+  "noInternetMessage": "Wystąpiły problemy z połączeniem. Sprawdź, czy masz dostęp do Internetu.",
+  "somethingWentWrong": "Występują problemy z przesyłaniem danych. Sprawdź, czy masz dostęp do Internetu i spróbuj ponownie.",
+  "retryTitle": "Spróbuj ponownie"
 }

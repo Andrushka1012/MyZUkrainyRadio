@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +9,9 @@ import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/widgets/progress_container.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
+import 'package:myzukrainy/core/presentation/widgets/something_went_wrong_retry.dart';
 import 'package:myzukrainy/core/presentation/widgets/word_press/word_press_post_item.dart';
+import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'bloc/main_page_cubit.dart';
@@ -19,7 +22,6 @@ class MainPage extends KoinPage<MainPageCubit> {
   @override
   void initBloc(MainPageCubit bloc) {
     bloc.init();
-    super.initBloc(bloc);
   }
 
   @override
@@ -82,35 +84,50 @@ class MainPage extends KoinPage<MainPageCubit> {
 class MainForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocConsumer<MainPageCubit, MainPageState>(
-        listener: _handleEvents,
-        buildWhen: (_, current) => current is MainPageProcessing || current is MainPageDefault,
-        builder: (ctx, state) => ProgressContainer(
-          isProcessing: state is MainPageProcessing,
-          child: state is MainPageDefault
-              ? ListView(
-            padding: EdgeInsets.zero,
-                  children: [
-                    ...state.posts
-                        .map(
-                          (post) => Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: Dimens.spanMedium),
-                            child: WordPressPostItem(
-                              post: post,
-                              onTap: () => launch(post.postUrl),
-                            ),
-                          ),
-              )
-                  .toList(),
-              SizedBox(
-                height: Dimens.spanBig,
-              ),
-            ],
-                )
+    listener: _handleEvents,
+    buildWhen: (_, current) => current is MainPageProcessing || current is MainPageDefault,
+    builder: (ctx, state) => ProgressContainer(
+      isProcessing: state is MainPageProcessing,
+      child: state is MainPageDefault
+              ? state.posts.isNotEmpty
+                  ? ListView(
+                      padding: EdgeInsets.zero,
+                      children: [
+                        ...state.posts
+                            .map(
+                              (post) => Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: Dimens.spanMedium),
+                                child: WordPressPostItem(
+                                  post: post,
+                                  onTap: () => launch(post.postUrl),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        SizedBox(
+                          height: Dimens.spanBig,
+                        ),
+                      ],
+                    )
+                  : Center(
+                      child: SomethingWentWrongRetry(onRetry: () {
+                        BlocProvider.of<MainPageCubit>(context).init();
+                      }),
+                    )
               : Container(),
-        ),
-      );
+    ),
+  );
 
   void _handleEvents(BuildContext context, MainPageState state) {
-    // TODO: handle errors
+    if (state is MainPageError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: AppColors.headerColor,
+          content: Text(
+            LocaleKeys.somethingWentWrong.tr(),
+          ),
+        ),
+      );
+    }
   }
 }
