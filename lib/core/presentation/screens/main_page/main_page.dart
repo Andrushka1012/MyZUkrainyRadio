@@ -12,6 +12,7 @@ import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/something_went_wrong_retry.dart';
 import 'package:myzukrainy/core/presentation/widgets/word_press/word_press_post_item.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:myzukrainy/helpers/size_helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'bloc/main_page_cubit.dart';
@@ -41,7 +42,7 @@ class MainPage extends KoinPage<MainPageCubit> {
                 headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
                   return <Widget>[
                     SliverAppBar(
-                      expandedHeight: kToolbarHeight * 2,
+                      expandedHeight: kToolbarHeight * (MediaQuery.of(context).isSmallScreen ? 2.5 : 2),
                       backgroundColor: AppColors.headerColor,
                       floating: false,
                       pinned: false,
@@ -51,12 +52,15 @@ class MainPage extends KoinPage<MainPageCubit> {
                             padding: const EdgeInsets.only(left: Dimens.spanBig, top: kToolbarHeight),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: Dimens.spanBig),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              child: Stack(
                                 children: [
                                   HomePageIntroText(),
-                                  ShareButton(),
+                                  Align(
+                                    child: ShareButton(),
+                                    alignment: MediaQuery.of(context).isSmallScreen
+                                        ? Alignment.topRight
+                                        : Alignment.centerRight,
+                                  ),
                                 ],
                               ),
                             ),

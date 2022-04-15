@@ -13,7 +13,7 @@ class Dimens {
   static const spanBiggerGiant = 64.0;
 
   // Text sizes
-  static const fontSizeHeadline0 = 48.0;
+  static const fontSizeHeadline0 = 42.0;
   static const fontSizeHeadline1 = 28.0;
   static const fontSizeHeadline2 = 22.0;
   static const fontSizeHeadline3 = 18.0;
