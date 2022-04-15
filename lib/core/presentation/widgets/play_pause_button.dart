@@ -48,7 +48,8 @@ class PlayPauseButton extends StatelessWidget {
     if (errorMessage != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: AppColors.headerColor,
+          backgroundColor: AppColors.redTart,
+          behavior: SnackBarBehavior.floating,
           content: Text(
             errorMessage.tr(),
           ),

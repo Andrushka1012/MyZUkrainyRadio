@@ -126,7 +126,7 @@ class MainForm extends StatelessWidget {
     if (state is MainPageError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: AppColors.headerColor,
+          backgroundColor: AppColors.redTart,
           content: Text(
             LocaleKeys.somethingWentWrong.tr(),
           ),

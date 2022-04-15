@@ -9,11 +9,11 @@ import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
 import 'package:myzukrainy/core/presentation/widgets/back_button.dart';
-import 'package:myzukrainy/core/presentation/widgets/circle_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/mini_player/cover_disc.dart';
 import 'package:myzukrainy/core/presentation/widgets/play_pause_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:myzukrainy/helpers/size_helpers.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:volume_controller/volume_controller.dart';
 
@@ -36,36 +36,50 @@ class PlayerForm extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: Dimens.spanBig),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                CircleBackButton(),
-                Spacer(),
-                CircleShareButton(),
-              ],
-            ),
-            Center(
-              child: _VolumeControllerWithCover(size: MediaQuery.of(context).size.width * 0.8),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: Dimens.spanSmall,
-                left: Dimens.spanBig,
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      CircleBackButton(),
+                      Spacer(),
+                      CircleShareButton(),
+                    ],
+                  ),
+                  Center(
+                    child: _VolumeControllerWithCover(
+                      size: MediaQuery.of(context).size.width * 0.8,
+                    ),
+                  ),
+                  FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: Dimens.spanSmall,
+                        left: Dimens.spanBig,
+                        right: Dimens.spanBig,
+                      ),
+                      child: Text(
+                          LocaleKeys.myZUkrainy.tr(),
+                          style: AppTextStyles.headline,
+                        ),
+                    ),
+                  ),
+                  Text('🇵🇱 ❤️ 🇺🇦'),
+                  if (!MediaQuery.of(context).isSmallScreen) _StreamAnimation(),
+                ],
               ),
-              child: Text(
-                LocaleKeys.myZUkrainy.tr(),
-                style: AppTextStyles.headline,
-              ),
             ),
-            Text('🇵🇱 ❤️ 🇺🇦'),
-            _StreamAnimation(),
-            Spacer(),
-            Center(
-                child: PlayPauseButton(
-              size: Dimens.spanGiant,
-            )),
-            SizedBox(height: Dimens.spanBig,)
+            Expanded(
+              flex: 0,
+              child: Center(
+                  child: PlayPauseButton(
+                size: Dimens.spanGiant,
+              )),
+            ),
           ],
         ),
       ),
