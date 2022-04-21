@@ -16,7 +16,7 @@ class HomePageIntroText extends StatelessWidget {
   @override
   Widget build(BuildContext context) => RichText(
         textAlign: TextAlign.start,
-        textScaleFactor: MediaQuery.of(context).textScaleFactor,
+        textScaleFactor: 0.9,
         text: TextSpan(children: [
           TextSpan(
             text: '${_timedWelcomeMessage.tr()},\n',
