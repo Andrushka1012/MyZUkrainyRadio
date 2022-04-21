@@ -8,5 +8,8 @@
   "radioOfflineMessage": "Niestety obecnie nie ma połączenia z naszą stacją radiową. Spróbuj ponownie później.",
   "noInternetMessage": "Wystąpiły problemy z połączeniem. Sprawdź, czy masz dostęp do Internetu.",
   "somethingWentWrong": "Występują problemy z przesyłaniem danych. Sprawdź, czy masz dostęp do Internetu i spróbuj ponownie.",
-  "retryTitle": "Spróbuj ponownie"
+  "retryTitle": "Spróbuj ponownie",
+  "newsTitle": "Ostatnie wiadomości",
+  "podcastsTitle": "Ostatnie audycje w formacie podcastu",
+  "showMore": "Więcej"
 }

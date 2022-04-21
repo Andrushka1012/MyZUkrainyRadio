@@ -31,6 +31,7 @@ dependencies:
   connectivity_plus: 2.3.0
   freezed: 2.0.2
   carousel_slider: 4.0.0
+  card_swiper: 2.0.3
 
 flutter:
   assets:

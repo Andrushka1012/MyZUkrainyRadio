@@ -11,5 +11,8 @@ abstract class  LocaleKeys {
   static const noInternetMessage = 'noInternetMessage';
   static const somethingWentWrong = 'somethingWentWrong';
   static const retryTitle = 'retryTitle';
+  static const newsTitle = 'newsTitle';
+  static const podcastsTitle = 'podcastsTitle';
+  static const showMore = 'showMore';
 
 }

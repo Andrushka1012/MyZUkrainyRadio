@@ -1,15 +1,8 @@
-import 'package:myzukrainy/app/config/app_config.dart';
+import 'package:myzukrainy/app/config/prod.dart';
 
 void main() => Test();
 
-class Test extends AppConfig {
+class Test extends Prod {
   @override
   String get streamUrl => 'https://online.nasze.fm:9443/stream';
-
-  @override
-  String get androidNotificationChannelId => 'com.cis.myzukrainy.channel.audio';
-
-  @override
-  String get baseUrl => 'https://www.myzukrainy.pl';
-
 }
