@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
-import 'package:myzukrainy/config/app_config.dart';
+import 'package:myzukrainy/app/config/app_config.dart';
 import 'package:myzukrainy/core/domain/player/player_controller.dart';
 
 class AppConnectivity {

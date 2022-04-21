@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
-import 'package:myzukrainy/core/presentation/screens/main_page/widgets/home_page_header_delegate.dart';
-import 'package:myzukrainy/core/presentation/screens/main_page/widgets/home_page_intro_text.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/widgets/progress_container.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/something_went_wrong_retry.dart';
 import 'package:myzukrainy/core/presentation/widgets/word_press/word_press_post_item.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/bloc/main_page_cubit.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/widgets/home_page_intro_text.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:myzukrainy/helpers/size_helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'bloc/main_page_cubit.dart';
+import 'widgets/home_page_header_delegate.dart';
 
 class MainPage extends KoinPage<MainPageCubit> {
   static const routeName = 'MainPage';

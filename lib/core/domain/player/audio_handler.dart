@@ -1,6 +1,6 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:myzukrainy/config/app_config.dart';
+import 'package:myzukrainy/app/config/app_config.dart';
 
 class AudioPlayerHandler extends BaseAudioHandler {
   static final _item = MediaItem(

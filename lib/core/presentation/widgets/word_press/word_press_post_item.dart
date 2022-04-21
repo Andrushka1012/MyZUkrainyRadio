@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:myzukrainy/core/domain/domain_models/word_press_post.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_post.dart';
 
 class WordPressPostItem extends StatelessWidget {
   static const String blankImageBytes =

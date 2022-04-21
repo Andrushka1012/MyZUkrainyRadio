@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
+
 enum ResponseStatus { success, failure }
 
 class SafeResponse<T> {
@@ -32,6 +34,17 @@ class SafeResponse<T> {
       throw error!;
     }
   }
+
+  void fold({
+    required Function(T data) onSuccess,
+    required Function(dynamic data) onError,
+  }) {
+    if (isSuccessful) {
+      onSuccess(requiredData);
+    } else {
+      onError(requiredError);
+    }
+  }
 }
 
 Future<SafeResponse<T>> fetchSafety<T>(Future<T> Function() request, {Function(dynamic)? onError}) async {
@@ -39,6 +52,8 @@ Future<SafeResponse<T>> fetchSafety<T>(Future<T> Function() request, {Function(d
     final T data = await request();
     return SafeResponse.success(data);
   } catch (error) {
+    print(error);
+
     if (onError != null) {
       onError(error);
     }

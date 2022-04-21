@@ -1,4 +1,4 @@
-import 'package:myzukrainy/config/app_config.dart';
+import 'package:myzukrainy/app/config/app_config.dart';
 
 void main() => Prod();
 

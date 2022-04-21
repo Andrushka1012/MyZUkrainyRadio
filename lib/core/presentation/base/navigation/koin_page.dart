@@ -9,7 +9,7 @@ import 'base_page.dart';
 ///  Wrap page with a [BlocProvider] specified to this page
 @immutable
 abstract class KoinPage<T extends BlocBase> extends BasePage<T> {
-  KoinPage({Key? key}) : super(key: key);
+  const KoinPage({Key? key}) : super(key: key);
 
   @override
   T createBloc() {

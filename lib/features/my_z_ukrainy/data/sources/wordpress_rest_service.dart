@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:myzukrainy/core/data/dto_models/word_press_post.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/data/models/word_press_post.dart';
 
 class WordPressApiService {
   WordPressApiService(this._dio);
@@ -7,7 +7,11 @@ class WordPressApiService {
   final Dio _dio;
   final String _baseUrl = '/wp-json/wp/v2';
 
-  Future<List<WordPressPostDto>> getNews() => _dio.get('$_baseUrl/posts').then(
+  Future<List<WordPressPostDto>> getNews() => _dio.get('$_baseUrl/posts', queryParameters: {
+        'page': 1,
+        'per_page': 10,
+        'categories_exclude': [11],
+      }).then(
         (response) => (response.data as Iterable).map((json) {
           final acf = json['acf'];
 

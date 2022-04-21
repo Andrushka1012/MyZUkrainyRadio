@@ -1,3 +1,3 @@
-import 'config/prod.dart';
+import 'package:myzukrainy/app/config/prod.dart';
 
 void main() => Prod();

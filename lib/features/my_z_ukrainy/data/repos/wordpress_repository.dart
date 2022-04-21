@@ -1,5 +1,5 @@
-import 'package:myzukrainy/core/data/dto_models/word_press_post.dart';
-import 'package:myzukrainy/core/data/sources/wordpress_rest_service.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/data/models/word_press_post.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/data/sources/wordpress_rest_service.dart';
 
 class WordPressRepository {
   WordPressRepository(this._apiService);

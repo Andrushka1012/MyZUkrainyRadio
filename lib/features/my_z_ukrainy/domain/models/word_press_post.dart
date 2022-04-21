@@ -1,4 +1,5 @@
-import 'package:myzukrainy/core/data/dto_models/word_press_post.dart';
+
+import 'package:myzukrainy/features/my_z_ukrainy/data/models/word_press_post.dart';
 
 class WordPressPost {
   WordPressPost({

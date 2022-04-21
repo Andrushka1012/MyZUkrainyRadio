@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myzukrainy/core/presentation/screens/main_page/main_page.dart';
-import 'package:myzukrainy/core/presentation/screens/player/player_page.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/main_page.dart';
+import 'package:myzukrainy/features/player/player_page.dart';
 
 final routes = <String, WidgetBuilder>{
   MainPage.routeName: (_) => MainPage(),

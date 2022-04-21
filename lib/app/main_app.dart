@@ -6,13 +6,13 @@ import 'package:koin/internals.dart';
 import 'package:koin/koin.dart';
 import 'package:myzukrainy/app/app_module.dart';
 import 'package:myzukrainy/app/routes.dart';
-import 'package:myzukrainy/config/app_config.dart';
-import 'package:myzukrainy/core/data/data_module.dart';
-import 'package:myzukrainy/core/domain/domain_module.dart';
+import 'package:myzukrainy/app/config/app_config.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/data/data_module.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/domain/domain_module.dart';
 import 'package:myzukrainy/core/domain/player/audio_handler.dart';
-import 'package:myzukrainy/core/presentation/presentation_module.dart';
-import 'package:myzukrainy/core/presentation/screens/main_page/main_page.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/presentation_module.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/main_page.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:myzukrainy/helpers/scroll_configuration.dart';
 
@@ -55,9 +55,9 @@ class MainApp extends StatelessWidget {
       app.printLogger(level: Level.debug);
       app.modules([
         appModule,
-        presentationModule,
-        dataModule,
-        domainModule,
+        myZUkrainyPresentationModule,
+        nyZUkrainyDataModule,
+        myZUkrainyDomainModule,
       ]);
     });
   }

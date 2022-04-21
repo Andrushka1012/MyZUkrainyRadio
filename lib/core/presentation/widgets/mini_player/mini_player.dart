@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:myzukrainy/core/presentation/screens/player/player_page.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
 import 'package:myzukrainy/core/presentation/widgets/mini_player/cover_disc.dart';
 import 'package:myzukrainy/core/presentation/widgets/play_pause_button.dart';
+import 'package:myzukrainy/features/player/player_page.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 
 class MiniPlayer extends StatelessWidget {
