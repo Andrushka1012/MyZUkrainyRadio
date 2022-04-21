@@ -77,7 +77,7 @@ class MainApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      initialRoute: MainPage.routeName,
+      initialRoute: MyZUkrainyHomePage.routeName,
       routes: routes,
       builder: (context, child) {
         return ScrollConfiguration(
@@ -85,12 +85,7 @@ class MainApp extends StatelessWidget {
           child: child ?? Container(),
         );
       },
-      onGenerateRoute: (RouteSettings settings) => MaterialPageRoute(
-        settings: settings,
-        builder: (BuildContext context) {
-          return getGenerateRoutePage(settings);
-        },
-      ),
+      onGenerateRoute: getGenerateRoutePage,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
