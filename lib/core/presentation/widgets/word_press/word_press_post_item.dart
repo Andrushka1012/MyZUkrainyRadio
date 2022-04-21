@@ -22,6 +22,7 @@ class WordPressPostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Card(
         semanticContainer: true,
+        elevation: Dimens.spanTiny,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14.0),

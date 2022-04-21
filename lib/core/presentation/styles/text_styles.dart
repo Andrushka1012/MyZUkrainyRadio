@@ -39,6 +39,14 @@ class AppTextStyles {
         color: AppColors.white,
       );
 
+  static TextStyle get title => GoogleFonts.roboto(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.1,
+    color: AppColors.white,
+  );
+
+
 
 
   static TextStyle get headline3 => GoogleFonts.pattaya(

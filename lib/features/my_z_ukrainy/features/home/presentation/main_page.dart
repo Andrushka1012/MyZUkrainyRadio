@@ -106,10 +106,34 @@ class MainForm extends StatelessWidget {
           children: [
             if (podcasts.isNotEmpty) ...[
               Center(
-                child: Text(
-                  LocaleKeys.podcastsTitle.tr(),
-                  style: AppTextStyles.headline2.copyWith(
-                    color: AppColors.headerColor,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: Dimens.spanHuge,
+                    right: Dimens.spanBig,
+                    top: Dimens.spanSmall,
+                    bottom: Dimens.spanSmall,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          LocaleKeys.podcastsTitle.tr(),
+                          style: AppTextStyles.headline2.copyWith(
+                            color: AppColors.headerColor,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: ()=> launch(AppConfig.value.podcastsUrl),
+                        child: Text(
+                          LocaleKeys.showMore.tr(),
+                          style: AppTextStyles.title.copyWith(
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -118,33 +142,18 @@ class MainForm extends StatelessWidget {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Swiper(
-                    itemCount: podcasts.length + 1,
+                    itemCount: podcasts.length,
                     loop: false,
                     scrollDirection: Axis.horizontal,
                     viewportFraction: 0.75,
                     autoplay: true,
                     autoplayDelay: 5000,
                     autoplayDisableOnInteraction: true,
-                    itemBuilder: (_, index) => index < podcasts.length
-                        ? PodcastItem(
-                            title: podcasts[index].title,
-                            imageSrc: podcasts[index].formattedImageSrc,
-                            podcastSrc: podcasts[index].podcastSrc,
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.only(left: Dimens.spanSmall),
-                            child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: GestureDetector(
-                                  onTap: () => launch(AppConfig.value.podcastsUrl),
-                                  child: Text(
-                                    LocaleKeys.showMore.tr(),
-                                    style: AppTextStyles.headline2.copyWith(
-                                      color: AppColors.primary,
-                                    ),
-                                  ),
-                                )),
-                          ),
+                    itemBuilder: (_, index) => PodcastItem(
+                      title: podcasts[index].title,
+                      imageSrc: podcasts[index].formattedImageSrc,
+                      podcastSrc: podcasts[index].podcastSrc,
+                    ),
                   ),
                 ),
               ),
@@ -154,17 +163,20 @@ class MainForm extends StatelessWidget {
             ],
             if (posts.isNotEmpty && podcasts.isNotEmpty)
               Center(
-                child: Text(
-                  LocaleKeys.newsTitle.tr(),
-                  style: AppTextStyles.headline2.copyWith(
-                    color: AppColors.headerColor,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: Dimens.spanSmall),
+                  child: Text(
+                    LocaleKeys.newsTitle.tr(),
+                    style: AppTextStyles.headline2.copyWith(
+                      color: AppColors.headerColor,
+                    ),
                   ),
                 ),
               ),
             ...posts
                 .map(
                   (post) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Dimens.spanMedium),
+                    padding: const EdgeInsets.symmetric(horizontal: Dimens.spanMediumLarge, vertical: Dimens.spanTiny),
                     child: WordPressPostItem(
                       post: post,
                       onTap: () => launch(post.postUrl),

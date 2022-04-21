@@ -22,64 +22,64 @@ class PodcastItem extends StatelessWidget {
   final String? imageSrc;
 
   @override
-  Widget build(BuildContext context) => Card(
-        semanticContainer: true,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14.0),
-        ),
-        child: InkWell(
-          onTap: () {
-            launch(podcastSrc);
-          },
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: FadeInImage(
-                  image: (imageSrc?.isNotEmpty == true
-                      ? CachedNetworkImageProvider(imageSrc!)
-                      : AssetImage('assets/images/cover_white.jpg')) as ImageProvider,
-                  fit: BoxFit.cover,
-                  placeholder: MemoryImage(base64Decode(blankImageBytes)),
-                ),
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(Dimens.spanSmall),
+      semanticContainer: true,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14.0),
+      ),
+      child: InkWell(
+        onTap: () {
+          launch(podcastSrc);
+        },
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: FadeInImage(
+                image: (imageSrc?.isNotEmpty == true
+                    ? CachedNetworkImageProvider(imageSrc!)
+                    : AssetImage('assets/images/cover_white.jpg')) as ImageProvider,
+                fit: BoxFit.cover,
+                placeholder: MemoryImage(base64Decode(blankImageBytes)),
               ),
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Container(
-                  color: AppColors.mainPageHeaderColorAlpha2,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: Dimens.spanHuge,
-                      left: Dimens.spanSmall,
-                      right: Dimens.spanSmall,
-                      top: Dimens.spanTiny
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          title,
-                          textAlign: TextAlign.start,
-                          style: AppTextStyles.headline1.copyWith(color: Colors.white),
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                color: AppColors.mainPageHeaderColorAlpha2,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      bottom: Dimens.spanHuge, left: Dimens.spanSmall, right: Dimens.spanSmall, top: Dimens.spanTiny),
+                  child: Row(
+                    children: [
+                      Text(
+                        title,
+                        textAlign: TextAlign.start,
+                        style: AppTextStyles.headline1.copyWith(color: Colors.white),
+                      ),
+                      Spacer(),
+                      Container(
+                        width: Dimens.spanGiant,
+                        height: Dimens.spanGiant,
+                        decoration: BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+                        child: Icon(
+                          Icons.play_arrow,
+                          color: Colors.white,
                         ),
-                        Spacer(),
-                        Container(
-                          width: Dimens.spanGiant,
-                          height: Dimens.spanGiant,
-                          decoration: BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
-                          child: Icon(
-                            Icons.play_arrow,
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }
