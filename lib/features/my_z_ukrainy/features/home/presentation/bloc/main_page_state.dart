@@ -1,21 +1,12 @@
 part of 'main_page_cubit.dart';
 
-@immutable
-abstract class MainPageState {
-  const MainPageState();
-}
+@freezed
+class MainPageState with _$MainPageState {
+  const factory MainPageState.empty() = _Empty;
 
-class MainPageProcessing extends MainPageState {}
+  const factory MainPageState.loading() = _Loading;
 
-class MainPageDefault extends MainPageState {
-  const MainPageDefault(this.posts, this.podcasts,);
+  const factory MainPageState.ready(List<WordPressPost> posts, List<WordPressPodcast> podcasts) = _Ready;
 
-  final List<WordPressPost> posts;
-  final List<WordPressPodcast> podcasts;
-}
-
-class MainPageError extends MainPageState {
-  const MainPageError(this.error);
-
-  final dynamic error;
+  const factory MainPageState.error(dynamic error) = _Error;
 }

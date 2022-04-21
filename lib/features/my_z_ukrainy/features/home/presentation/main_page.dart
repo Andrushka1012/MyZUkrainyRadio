@@ -9,7 +9,6 @@ import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
 import 'package:myzukrainy/core/presentation/widgets/podcastItem.dart';
-import 'package:myzukrainy/core/presentation/widgets/progress_container.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/show_more_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/something_went_wrong_retry.dart';
@@ -94,115 +93,118 @@ class MainForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocConsumer<MainPageCubit, MainPageState>(
     listener: _handleEvents,
-        buildWhen: (_, current) => current is MainPageProcessing || current is MainPageDefault,
         builder: (ctx, state) {
-          return ProgressContainer(
-            isProcessing: state is MainPageProcessing,
-            child: state is MainPageDefault
-                ? state.posts.isNotEmpty
-                    ? ListView(
-                        padding: EdgeInsets.zero,
-                        children: [
-                          if (state.podcasts.isNotEmpty) ...[
-                            Center(
-                              child: Text(
-                                LocaleKeys.podcastsTitle.tr(),
-                                style: AppTextStyles.headline2.copyWith(
-                                  color: AppColors.headerColor,
-                                ),
-                              ),
-                            ),
-                            AspectRatio(
-                              aspectRatio: 2,
-                              child: SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                child: Swiper(
-                                  itemCount: state.podcasts.length + 1,
-                                  loop: false,
-                                  scrollDirection: Axis.horizontal,
-                                  viewportFraction: 0.75,
-                                  autoplay: true,
-                                  autoplayDisableOnInteraction: true,
-                                  itemBuilder: (_, index) => index < state.podcasts.length
-                                      ? PodcastItem(
-                                          title: state.podcasts[index].title,
-                                          imageSrc: state.podcasts[index].formattedImageSrc,
-                                          podcastSrc: state.podcasts[index].podcastSrc,
-                                        )
-                                      : Padding(
-                                          padding: const EdgeInsets.only(left: Dimens.spanSmall),
-                                          child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: GestureDetector(
-                                                onTap: () => launch(AppConfig.value.podcastsUrl),
-                                                child: Text(
-                                                  LocaleKeys.showMore.tr(),
-                                                  style: AppTextStyles.headline2.copyWith(
-                                                    color: AppColors.primary,
-                                                  ),
-                                                ),
-                                              )),
-                                        ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: Dimens.spanBig,
-                            ),
-                          ],
-                          if (state.posts.isNotEmpty && state.podcasts.isNotEmpty)
-                            Center(
-                              child: Text(
-                                LocaleKeys.newsTitle.tr(),
-                                style: AppTextStyles.headline2.copyWith(
-                                  color: AppColors.headerColor,
-                                ),
-                              ),
-                            ),
-                          ...state.posts
-                              .map(
-                                (post) => Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: Dimens.spanMedium),
-                                  child: WordPressPostItem(
-                                    post: post,
-                                    onTap: () => launch(post.postUrl),
-                                  ),
-                                ),
+          return state.maybeWhen(
+            loading: () => Center(
+              child: CircularProgressIndicator(),
+            ),
+            ready: (
+              posts,
+              podcasts,
+            ) =>
+                ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                if (podcasts.isNotEmpty) ...[
+                  Center(
+                    child: Text(
+                      LocaleKeys.podcastsTitle.tr(),
+                      style: AppTextStyles.headline2.copyWith(
+                        color: AppColors.headerColor,
+                      ),
+                    ),
+                  ),
+                  AspectRatio(
+                    aspectRatio: 2,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Swiper(
+                        itemCount: podcasts.length + 1,
+                        loop: false,
+                        scrollDirection: Axis.horizontal,
+                        viewportFraction: 0.75,
+                        autoplay: true,
+                        autoplayDisableOnInteraction: true,
+                        itemBuilder: (_, index) => index < podcasts.length
+                            ? PodcastItem(
+                                title: podcasts[index].title,
+                                imageSrc: podcasts[index].formattedImageSrc,
+                                podcastSrc: podcasts[index].podcastSrc,
                               )
-                              .toList(),
-                          if (state.posts.isNotEmpty)
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: Dimens.spanHuge,
-                                vertical: Dimens.spanBig,
+                            : Padding(
+                                padding: const EdgeInsets.only(left: Dimens.spanSmall),
+                                child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: GestureDetector(
+                                      onTap: () => launch(AppConfig.value.podcastsUrl),
+                                      child: Text(
+                                        LocaleKeys.showMore.tr(),
+                                        style: AppTextStyles.headline2.copyWith(
+                                          color: AppColors.primary,
+                                        ),
+                                      ),
+                                    )),
                               ),
-                              child: ShowMoreButton(
-                                onPressed: () => launch(AppConfig.value.newsUrl),
-                              ),
-                            ),
-                          SizedBox(height: Dimens.spanBig),
-                        ],
-                      )
-                    : Center(
-                        child: SomethingWentWrongRetry(onRetry: () {
-                          BlocProvider.of<MainPageCubit>(context).init();
-                        }),
-                      )
-                : Container(),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: Dimens.spanBig,
+                  ),
+                ],
+                if (posts.isNotEmpty && podcasts.isNotEmpty)
+                  Center(
+                    child: Text(
+                      LocaleKeys.newsTitle.tr(),
+                      style: AppTextStyles.headline2.copyWith(
+                        color: AppColors.headerColor,
+                      ),
+                    ),
+                  ),
+                ...posts
+                    .map(
+                      (post) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: Dimens.spanMedium),
+                        child: WordPressPostItem(
+                          post: post,
+                          onTap: () => launch(post.postUrl),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                if (posts.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: Dimens.spanHuge,
+                      vertical: Dimens.spanBig,
+                    ),
+                    child: ShowMoreButton(
+                      onPressed: () => launch(AppConfig.value.newsUrl),
+                    ),
+                  ),
+                SizedBox(height: Dimens.spanBig),
+              ],
+            ),
+            empty: () => SomethingWentWrongRetry(onRetry: () {
+              BlocProvider.of<MainPageCubit>(context).init();
+            }),
+            orElse: () => Container(),
           );
         },
       );
 
   void _handleEvents(BuildContext context, MainPageState state) {
-    if (state is MainPageError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: AppColors.redTart,
-          content: Text(
-            LocaleKeys.somethingWentWrong.tr(),
+    state.whenOrNull(
+      error: (_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: AppColors.redTart,
+            content: Text(
+              LocaleKeys.somethingWentWrong.tr(),
+            ),
           ),
-        ),
-      );
-    }
+        );
+      },
+    );
   }
 }
