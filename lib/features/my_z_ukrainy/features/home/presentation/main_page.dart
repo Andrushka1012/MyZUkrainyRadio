@@ -29,7 +29,7 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
 
   @override
   void initBloc(MainPageCubit bloc) {
-    bloc.init();
+    Future.delayed(Duration(milliseconds: 500)).then((value) => bloc.init());
   }
 
   @override
@@ -91,7 +91,7 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
       floatingActionButton: FloatingActionButton(
         child: Text('PL'),
         backgroundColor: AppColors.primary,
-        onPressed: () => Navigator.pushNamed(context, PolishPage.routeName),
+        onPressed: () => Navigator.pushReplacementNamed(context, PolishPage.routeName),
       ),
     );
   }
