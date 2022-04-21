@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
@@ -33,7 +34,7 @@ class WordPressPostItem extends StatelessWidget {
                 aspectRatio: 1.65,
                 child: FadeInImage(
                   image: (post.imageSrc?.isNotEmpty == true
-                      ? NetworkImage(post.imageSrc!)
+                      ? CachedNetworkImageProvider(post.imageSrc!)
                       : AssetImage('assets/images/cover_white.jpg')) as ImageProvider,
                   fit: BoxFit.cover,
                   placeholder: MemoryImage(base64Decode(blankImageBytes)),
