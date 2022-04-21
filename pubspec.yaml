@@ -30,6 +30,7 @@ dependencies:
   url_launcher: 6.0.20
   connectivity_plus: 2.3.0
   freezed: 2.0.2
+  carousel_slider: 4.0.0
 
 flutter:
   assets:

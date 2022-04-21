@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/data/models/word_press_podcast.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/data/models/word_press_post.dart';
 
 class WordPressApiService {
@@ -21,6 +22,22 @@ class WordPressApiService {
             imageSrc: acf['image_src'],
             postUrl: json['link'],
             dateTime: DateTime.parse(json['date']),
+          );
+        }).toList(),
+      );
+
+  Future<List<WordPressPodcastDto>> getPodcasts() => _dio.get('$_baseUrl/posts', queryParameters: {
+        'page': 1,
+        'per_page': 10,
+        'categories': [11],
+      }).then(
+        (response) => (response.data as Iterable).map((json) {
+          final acf = json['acf'];
+
+          return WordPressPodcastDto(
+            title: acf['title'],
+            imageSrc: acf['image_src'],
+            podcastSrc: acf['image_src'],
           );
         }).toList(),
       );

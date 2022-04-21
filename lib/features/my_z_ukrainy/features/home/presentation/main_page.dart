@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
+import 'package:myzukrainy/core/presentation/widgets/podcastItem.dart';
 import 'package:myzukrainy/core/presentation/widgets/progress_container.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/something_went_wrong_retry.dart';
@@ -97,6 +99,27 @@ class MainForm extends StatelessWidget {
                   ? ListView(
                       padding: EdgeInsets.zero,
                       children: [
+                        if (state.podcasts.isNotEmpty)
+                          CarouselSlider(
+                            options: CarouselOptions(),
+                            items: state.podcasts.map(
+                              (podcast) {
+                                return Builder(
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                      child: PodcastItem(
+                                        title: podcast.title,
+                                        imageSrc: podcast.formattedImageSrc,
+                                        podcastSrc: podcast.podcastSrc,
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ).toList(),
+                          ),
                         ...state.posts
                             .map(
                               (post) => Padding(
@@ -108,9 +131,7 @@ class MainForm extends StatelessWidget {
                               ),
                             )
                             .toList(),
-                        SizedBox(
-                          height: Dimens.spanBig,
-                        ),
+                        SizedBox(height: Dimens.spanBig),
                       ],
                     )
                   : Center(
@@ -119,8 +140,8 @@ class MainForm extends StatelessWidget {
                       }),
                     )
               : Container(),
-    ),
-  );
+        ),
+      );
 
   void _handleEvents(BuildContext context, MainPageState state) {
     if (state is MainPageError) {

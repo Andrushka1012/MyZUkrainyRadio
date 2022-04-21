@@ -1,3 +1,4 @@
+import 'package:myzukrainy/features/my_z_ukrainy/data/models/word_press_podcast.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/data/models/word_press_post.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/data/sources/wordpress_rest_service.dart';
 
@@ -7,4 +8,6 @@ class WordPressRepository {
   final WordPressApiService _apiService;
 
   Future<List<WordPressPostDto>> getNews() => _apiService.getNews();
+
+  Future<List<WordPressPodcastDto>> getPodcasts() => _apiService.getPodcasts();
 }

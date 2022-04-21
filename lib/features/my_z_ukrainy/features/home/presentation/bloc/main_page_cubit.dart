@@ -1,25 +1,58 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_podcast.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_post.dart';
-import 'package:myzukrainy/features/my_z_ukrainy/domain/use_cases/wordpress_use_case.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/domain/use_cases/wordpress_news_use_case.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/domain/use_cases/wordpress_podcasts_use_case.dart';
 
 part 'main_page_state.dart';
 
 class MainPageCubit extends Cubit<MainPageState> {
-  MainPageCubit(this._wordPressUseCase) : super(MainPageProcessing());
+  MainPageCubit(
+    this._fetchNews,
+    this._fetchPodcasts,
+  ) : super(MainPageProcessing());
 
-  final FetchMyZUkrainyNews _wordPressUseCase;
+  final FetchMyZUkrainyNews _fetchNews;
+  final FetchMyZUkrainyPodcasts _fetchPodcasts;
 
   Future init() async {
     emit(MainPageProcessing());
-    final postsResponse = await _wordPressUseCase.executeSafety();
+
+    late final List<WordPressPost> posts;
+    late final List<WordPressPodcast> podcasts;
+    dynamic error;
+
+    final postsResponse = await _fetchNews.executeSafety();
+    final podcastsResponse = await _fetchPodcasts.executeSafety();
 
     postsResponse.fold(
-      onSuccess: (news) => emit(MainPageDefault(news)),
-      onError: (error) {
-        emit(MainPageError(postsResponse.requiredError));
-        emit(MainPageDefault(const []));
+      onSuccess: (news) {
+        posts = news;
+      },
+      onError: (fetchError) {
+        error = fetchError;
+        posts = const [];
       },
     );
+
+    podcastsResponse.fold(
+      onSuccess: (news) {
+        podcasts = news;
+      },
+      onError: (fetchError) {
+        error = fetchError;
+        podcasts = const [];
+      },
+    );
+
+    if (error != null) {
+      emit(MainPageError(error));
+    }
+
+    emit(MainPageDefault(
+      posts,
+      podcasts,
+    ));
   }
 }

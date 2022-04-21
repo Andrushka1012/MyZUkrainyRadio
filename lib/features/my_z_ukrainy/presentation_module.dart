@@ -4,4 +4,5 @@ import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/bloc
 final myZUkrainyPresentationModule = Module()
   ..factory((scope) => MainPageCubit(
         scope.get(),
+        scope.get(),
       ));

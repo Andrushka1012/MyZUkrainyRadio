@@ -8,9 +8,10 @@ abstract class MainPageState {
 class MainPageProcessing extends MainPageState {}
 
 class MainPageDefault extends MainPageState {
-  const MainPageDefault(this.posts);
+  const MainPageDefault(this.posts, this.podcasts,);
 
   final List<WordPressPost> posts;
+  final List<WordPressPodcast> podcasts;
 }
 
 class MainPageError extends MainPageState {
