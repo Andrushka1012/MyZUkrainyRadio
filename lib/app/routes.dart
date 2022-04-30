@@ -7,6 +7,7 @@ import 'package:myzukrainy/helpers/circle_reveal_clipper.dart';
 import '../features/splash_screen/presentation/splash_screen_page.dart';
 
 final routes = <String, WidgetBuilder>{
+  MyZUkrainyHomePage.routeName: (_) => MyZUkrainyHomePage(),// TODO: remove when splash screen added
   PlayerPage.routeName: (_) => PlayerPage(),
   SplashScreenPage.routeName: (_) => SplashScreenPage(),
 };

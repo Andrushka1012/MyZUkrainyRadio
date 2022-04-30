@@ -5,7 +5,7 @@ import 'package:koin_flutter/koin_flutter.dart';
 
 import 'base_page.dart';
 
-///  Abstract class for base ummadum page with bloc automatically injected from [Koin].
+///  Abstract class for base  page with bloc automatically injected from [Koin].
 ///  Wrap page with a [BlocProvider] specified to this page
 @immutable
 abstract class KoinPage<T extends BlocBase> extends BasePage<T> {

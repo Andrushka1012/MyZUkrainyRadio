@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// Abstract class for base ummadum page. Wrap page with a [BlocProvider] specified to this page
+/// Abstract class for base page. Wrap page with a [BlocProvider] specified to this page
 @immutable
 abstract class BasePage<T extends BlocBase> extends StatelessWidget {
   const BasePage({Key? key})

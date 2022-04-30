@@ -11,6 +11,7 @@ import 'package:myzukrainy/core/domain/player/audio_handler.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/data/data_module.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/domain/domain_module.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/main_page.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/presentation_module.dart';
 import 'package:myzukrainy/features/splash_screen/presentation/splash_screen_page.dart';
 import 'package:myzukrainy/features/splash_screen/splash_screen_module.dart';
@@ -75,7 +76,7 @@ class MainApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      initialRoute: SplashScreenPage.routeName,
+      initialRoute: MyZUkrainyHomePage.routeName,
       routes: routes,
       builder: (context, child) {
         return ScrollConfiguration(

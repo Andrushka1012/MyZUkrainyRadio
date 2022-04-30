@@ -18,7 +18,6 @@ import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_podcas
 import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_post.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/bloc/main_page_cubit.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/widgets/home_page_intro_text.dart';
-import 'package:myzukrainy/features/polish/polish_page.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:myzukrainy/helpers/size_helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -91,11 +90,6 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Text('PL'),
-        backgroundColor: AppColors.primary,
-        onPressed: () => Navigator.pushReplacementNamed(context, PolishPage.routeName),
       ),
     );
   }
