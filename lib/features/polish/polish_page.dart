@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/main_page.dart';
 
@@ -7,6 +8,9 @@ class PolishPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: AppColors.redTart,
+    ));
     return Scaffold(
         body: Column(
           children: [

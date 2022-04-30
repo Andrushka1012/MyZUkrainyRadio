@@ -29,12 +29,15 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
   static const routeName = 'MyZUkrainyHomePage';
 
   @override
-  void initBloc(MainPageCubit bloc) {
+  void initBloc(BuildContext context, MainPageCubit bloc) {
     Future.delayed(Duration(milliseconds: 500)).then((value) => bloc.init());
   }
 
   @override
   Widget buildPage(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: AppColors.headerColor,
+    ));
     return Scaffold(
       backgroundColor: AppColors.background,
       body: AnnotatedRegion<SystemUiOverlayStyle>(

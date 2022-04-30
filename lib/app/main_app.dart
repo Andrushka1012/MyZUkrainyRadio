@@ -5,14 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:koin/internals.dart';
 import 'package:koin/koin.dart';
 import 'package:myzukrainy/app/app_module.dart';
-import 'package:myzukrainy/app/routes.dart';
 import 'package:myzukrainy/app/config/app_config.dart';
+import 'package:myzukrainy/app/routes.dart';
+import 'package:myzukrainy/core/domain/player/audio_handler.dart';
+import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/data/data_module.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/domain/domain_module.dart';
-import 'package:myzukrainy/core/domain/player/audio_handler.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/presentation_module.dart';
-import 'package:myzukrainy/core/presentation/styles/colors.dart';
-import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/main_page.dart';
+import 'package:myzukrainy/features/splash_screen/presentation/splash_screen_page.dart';
+import 'package:myzukrainy/features/splash_screen/splash_screen_module.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:myzukrainy/helpers/scroll_configuration.dart';
 
@@ -58,6 +59,7 @@ class MainApp extends StatelessWidget {
         myZUkrainyPresentationModule,
         nyZUkrainyDataModule,
         myZUkrainyDomainModule,
+        splashScreenModule,
       ]);
     });
   }
@@ -67,17 +69,13 @@ class MainApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: AppColors.headerColor,
-    ));
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: LocaleKeys.myZUkrainy.tr(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      initialRoute: MyZUkrainyHomePage.routeName,
+      initialRoute: SplashScreenPage.routeName,
       routes: routes,
       builder: (context, child) {
         return ScrollConfiguration(

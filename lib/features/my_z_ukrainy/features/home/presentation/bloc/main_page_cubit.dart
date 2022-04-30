@@ -6,7 +6,6 @@ import 'package:myzukrainy/features/my_z_ukrainy/domain/use_cases/wordpress_news
 import 'package:myzukrainy/features/my_z_ukrainy/domain/use_cases/wordpress_podcasts_use_case.dart';
 
 part 'main_page_cubit.freezed.dart';
-
 part 'main_page_state.dart';
 
 class MainPageCubit extends Cubit<MainPageState> {

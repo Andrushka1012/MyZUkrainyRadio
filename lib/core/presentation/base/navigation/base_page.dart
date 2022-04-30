@@ -13,14 +13,14 @@ abstract class BasePage<T extends BlocBase> extends StatelessWidget {
         super(key: key);
 
   /// Creates bloc specified to this page
-  T createBloc();
+  T createBloc(BuildContext context);
 
   /// Abstract function to provide page content which will be wrapped into [BlocProvider].
   Widget buildPage(BuildContext context);
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (ctx) => createBloc(),
+        create: (ctx) => createBloc(context),
         child: buildPage(context),
       );
 }

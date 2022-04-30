@@ -12,12 +12,12 @@ abstract class KoinPage<T extends BlocBase> extends BasePage<T> {
   const KoinPage({Key? key}) : super(key: key);
 
   @override
-  T createBloc() {
+  T createBloc(BuildContext context) {
     final bloc = get<T>();
-    initBloc(bloc);
+    initBloc(context, bloc);
     return bloc;
   }
 
   /// initial callback which called right after bloc initialized
-  void initBloc(T bloc) {}
+  void initBloc(BuildContext context, T bloc) {}
 }

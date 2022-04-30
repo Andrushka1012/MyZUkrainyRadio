@@ -12,12 +12,12 @@ abstract class KoinWithParamsPage<T extends BlocBase, P> extends BasePage<T> {
   P get params;
 
   @override
-  T createBloc() {
+  T createBloc(BuildContext context) {
     final bloc = getWithParam<T, P>(params);
-    initBloc(bloc);
+    initBloc(context, bloc);
     return bloc;
   }
 
   /// initial callback which called right after bloc initialized
-  void initBloc(T bloc) {}
+  void initBloc(BuildContext context, T bloc) {}
 }
