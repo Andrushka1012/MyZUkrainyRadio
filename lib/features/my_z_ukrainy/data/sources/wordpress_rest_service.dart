@@ -37,7 +37,7 @@ class WordPressApiService {
           return WordPressPodcastDto(
             title: acf['title'],
             imageSrc: acf['image_src'],
-            podcastSrc: acf['image_src'],
+            podcastSrc: acf['podcast_src'],
           );
         }).toList(),
       );
