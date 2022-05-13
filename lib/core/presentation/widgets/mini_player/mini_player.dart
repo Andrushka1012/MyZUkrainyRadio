@@ -25,7 +25,7 @@ class MiniPlayer extends StatelessWidget {
               color: Colors.transparent,
               elevation: 50,
               child: Padding(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(11),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

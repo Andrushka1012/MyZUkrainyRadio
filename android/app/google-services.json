@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "259907656417",
+    "project_id": "nadajemy",
+    "storage_bucket": "nadajemy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259907656417:android:122600bd70c89e4a86f5a0",
+        "android_client_info": {
+          "package_name": "com.cis.myzukrainy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259907656417-geod3kigjer4e5jdedda14ngu89aoq64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrlmAGVSsnQdQO3h_oLhyJSkHUGlS0Zlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259907656417-geod3kigjer4e5jdedda14ngu89aoq64.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

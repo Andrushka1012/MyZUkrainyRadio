@@ -32,7 +32,7 @@ class PlayerController {
   final AppConnectivity _appConnectivity;
 
   double rotationState = 0.0;
-  bool _proccessing = false;
+  bool _processing = false;
   Timer? _rotationTimer;
   final StreamController<double> rotationStream = StreamController.broadcast();
 
@@ -53,8 +53,8 @@ class PlayerController {
   }
 
   Future<ControllerResult> playPause() async {
-    if (_proccessing) return ControllerResult.processing;
-    _proccessing = true;
+    if (_processing) return ControllerResult.processing;
+    _processing = true;
 
     final isLiveState = await _appConnectivity.checkIsLive();
 
@@ -65,10 +65,10 @@ class PlayerController {
         _play();
       }
 
-      _proccessing = false;
+      _processing = false;
     } else {
       _stop();
-      _proccessing = false;
+      _processing = false;
     }
 
     return isLiveState;
