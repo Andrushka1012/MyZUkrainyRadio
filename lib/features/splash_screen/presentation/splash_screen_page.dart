@@ -5,7 +5,7 @@ import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/widgets/animated_logo.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/main_page.dart';
-import 'package:myzukrainy/features/polish/polish_page.dart';
+import 'package:myzukrainy/features/polish/features/home/presentation/nadajemy_page.dart';
 import 'package:myzukrainy/helpers/models/stations.dart';
 
 import 'bloc/splash_screen_cubit.dart';
@@ -22,9 +22,11 @@ class SplashScreenPage extends KoinPage<SplashScreenCubit> {
   Widget buildPage(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
       statusBarColor: AppColors.white,
+      systemNavigationBarColor: AppColors.white,
     ));
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: BlocListener<SplashScreenCubit, SplashScreenState>(
         listener: _handleEvents,
         child: InteractiveViewer(
@@ -48,8 +50,8 @@ class SplashScreenPage extends KoinPage<SplashScreenCubit> {
           case Station.myZUkrainy:
             Navigator.of(context).pushReplacementNamed(MyZUkrainyHomePage.routeName, arguments: true);
             break;
-          case Station.pl:
-            Navigator.of(context).pushReplacementNamed(PolishPage.routeName, arguments: true);
+          case Station.nadajemy:
+            Navigator.of(context).pushReplacementNamed(NadajemyPage.routeName, arguments: true);
             break;
         }
       },

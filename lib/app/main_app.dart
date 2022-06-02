@@ -18,6 +18,8 @@ import 'package:myzukrainy/features/splash_screen/splash_screen_module.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:myzukrainy/helpers/scroll_configuration.dart';
 
+import '../features/polish/presentation_module.dart';
+
 class MainApp extends StatelessWidget {
   static Future launchApp() async {
     _initKoin();
@@ -61,6 +63,7 @@ class MainApp extends StatelessWidget {
         nyZUkrainyDataModule,
         myZUkrainyDomainModule,
         splashScreenModule,
+        nadajemyPresentationModule,
       ]);
     });
   }
@@ -76,7 +79,7 @@ class MainApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      initialRoute: MyZUkrainyHomePage.routeName,
+      initialRoute: SplashScreenPage.routeName,
       routes: routes,
       builder: (context, child) {
         return ScrollConfiguration(

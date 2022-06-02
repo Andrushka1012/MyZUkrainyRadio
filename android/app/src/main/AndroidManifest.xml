@@ -70,7 +70,7 @@
             android:resource="@drawable/ic_launcher_foreground" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@android:color/holo_blue_bright" />
+            android:resource="@android:color/white" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="nadejeMy_chanel" />

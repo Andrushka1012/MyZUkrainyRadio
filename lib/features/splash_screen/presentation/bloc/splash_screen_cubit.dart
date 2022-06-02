@@ -25,7 +25,7 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
 
     if (selectedStationValue.isEmpty) {
       if (locale.languageCode.toLowerCase().contains('pl')) {
-        selectedStationValue = Station.pl.toString();
+        selectedStationValue = Station.nadajemy.toString();
       } else {
         selectedStationValue = Station.myZUkrainy.toString();
       }

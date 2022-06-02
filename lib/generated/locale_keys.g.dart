@@ -14,5 +14,6 @@ abstract class  LocaleKeys {
   static const newsTitle = 'newsTitle';
   static const podcastsTitle = 'podcastsTitle';
   static const showMore = 'showMore';
+  static const nadajamy = 'nadajamy';
 
 }

@@ -8,6 +8,7 @@ import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
+import 'package:myzukrainy/core/presentation/widgets/app_bottom_nav_bar.dart';
 import 'package:myzukrainy/core/presentation/widgets/fadeIn.dart';
 import 'package:myzukrainy/core/presentation/widgets/podcastItem.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
@@ -19,6 +20,7 @@ import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_post.d
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/bloc/main_page_cubit.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/widgets/home_page_intro_text.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:myzukrainy/helpers/models/stations.dart';
 import 'package:myzukrainy/helpers/size_helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -30,13 +32,17 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
   @override
   void initBloc(BuildContext context, MainPageCubit bloc) {
     Future.delayed(Duration(milliseconds: 500)).then((value) => bloc.init());
+
+    Future.delayed(Duration(milliseconds: 750)).then(
+      (value) => SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: AppColors.headerColor,
+        systemNavigationBarColor: AppColors.headerColor,
+      )),
+    );
   }
 
   @override
   Widget buildPage(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: AppColors.headerColor,
-    ));
     return Scaffold(
       backgroundColor: AppColors.background,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -90,6 +96,19 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.primary,
+        onPressed: () {
+          //code to execute on button press
+        },
+        child: Icon(Icons.send), //icon inside button
+      ),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      //floating action button position to right
+      bottomNavigationBar: AppBottomNavBar(
+        station: Station.myZUkrainy,
       ),
     );
   }

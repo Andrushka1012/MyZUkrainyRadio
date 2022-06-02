@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/main_page.dart';
 import 'package:myzukrainy/features/player/player_page.dart';
-import 'package:myzukrainy/features/polish/polish_page.dart';
+import 'package:myzukrainy/features/polish/features/home/presentation/nadajemy_page.dart';
 import 'package:myzukrainy/helpers/circle_reveal_clipper.dart';
 
 import '../features/splash_screen/presentation/splash_screen_page.dart';
 
 final routes = <String, WidgetBuilder>{
-  MyZUkrainyHomePage.routeName: (_) => MyZUkrainyHomePage(),// TODO: remove when splash screen added
   PlayerPage.routeName: (_) => PlayerPage(),
   SplashScreenPage.routeName: (_) => SplashScreenPage(),
 };
 
 Route<dynamic>? getGenerateRoutePage(RouteSettings settings) {
   switch (settings.name) {
-    case PolishPage.routeName:
+    case NadajemyPage.routeName:
       return _circularPage(
         settings,
-        PolishPage(),
+        NadajemyPage(),
         formBottom: true,
         fromCenter: settings.arguments == true,
       );
@@ -56,11 +55,11 @@ Route _circularPage(
         Offset center;
 
         if (formBottom) {
-          center = Offset(screenSize.width - 40, screenSize.height - 40);
+          center = Offset(screenSize.width - 100, screenSize.height - 40);
         } else if (fromCenter) {
           center = Offset(screenSize.width / 2, screenSize.height / 2);
         } else {
-          center = Offset(screenSize.width - 40, 100);
+          center = Offset(100, screenSize.height - 40);
         }
 
         double beginRadius = 0.0;

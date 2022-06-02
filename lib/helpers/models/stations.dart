@@ -1,6 +1,6 @@
 enum Station {
   myZUkrainy,
-  pl,
+  nadajemy,
 }
 
 extension StationExtension on Station {

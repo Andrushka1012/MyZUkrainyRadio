@@ -5,4 +5,5 @@ final myZUkrainyPresentationModule = Module()
   ..factory((scope) => MainPageCubit(
         scope.get(),
         scope.get(),
+        scope.get(),
       ));
