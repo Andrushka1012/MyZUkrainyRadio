@@ -25,7 +25,12 @@ class MainApp extends StatelessWidget {
     _initKoin();
 
     final audioHandler = await AudioService.init(
-      builder: () => AudioPlayerHandler(),
+      builder: () {
+        final handler = AudioPlayerHandler();
+        KoinContextHandler.get().declare<AudioPlayerHandler>(handler);
+
+        return handler;
+      },
       config: AudioServiceConfig(
         androidNotificationChannelId: AppConfig.value.androidNotificationChannelId,
         androidNotificationChannelName: 'Radio playback',

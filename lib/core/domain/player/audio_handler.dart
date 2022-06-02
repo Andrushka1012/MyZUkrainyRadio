@@ -1,24 +1,52 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:myzukrainy/app/config/app_config.dart';
+import 'package:myzukrainy/helpers/models/stations.dart';
 
 class AudioPlayerHandler extends BaseAudioHandler {
-  static final _item = MediaItem(
-    id: AppConfig.value.streamUrl,
+  static final _uaItem = MediaItem(
+    id: AppConfig.value.uaStreamUrl,
     title: 'My z Ukrainy',
     artist: '🇵🇱 ❤️ 🇺🇦',
     artUri: Uri.parse(
       'https://raw.githubusercontent.com/Andrushka1012/MyZUkrainyRadio/main/assets/images/cover_white.jpg',
     ),
   );
+  static final _plItem = MediaItem(
+    id: AppConfig.value.plStreamUrl,
+    title: 'Nadajemy',
+    artist: '',
+    artUri: Uri.parse(
+      'https://paczka-wiedzy.pl/wp-content/uploads/2018/08/polska.png',
+    ),
+  );
 
   AudioPlayerHandler() {
-    player.setUrl(_item.id);
-    mediaItem.add(_item);
     player.playbackEventStream.map(_transformEvent).pipe(playbackState);
   }
 
   final player = AudioPlayer();
+
+  Future init(Station station) async{
+    player.stop();
+
+    late final MediaItem item;
+
+    switch (station) {
+      case Station.myZUkrainy:
+        item = _uaItem;
+        await removeQueueItem(_plItem);
+        break;
+      case Station.nadajemy:
+        item = _plItem;
+        await removeQueueItem(_uaItem);
+        break;
+    }
+
+    player.setUrl(item.id);
+
+    mediaItem.add(item);
+  }
 
   @override
   Future<void> play() {

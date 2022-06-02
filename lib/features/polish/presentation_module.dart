@@ -4,4 +4,5 @@ import 'package:myzukrainy/features/polish/features/home/presentation/bloc/nadaj
 final nadajemyPresentationModule = Module()
   ..factory((scope) => NadajemyHomeCubit(
         scope.get(),
+        scope.get(),
       ));

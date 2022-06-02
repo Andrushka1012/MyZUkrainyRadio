@@ -33,7 +33,7 @@ class AppConnectivity {
 
   Future<ControllerResult> checkIsLive() async {
     try {
-      var request = http.MultipartRequest("GET", Uri.parse(AppConfig.value.streamUrl));
+      var request = http.MultipartRequest("GET", Uri.parse(AppConfig.value.uaStreamUrl));
       final streamedResponse = await request.send();
 
       return streamedResponse.statusCode < 400 ? ControllerResult.live : ControllerResult.offline;

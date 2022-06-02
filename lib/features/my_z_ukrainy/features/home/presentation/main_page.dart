@@ -97,13 +97,13 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primary,
         onPressed: () {
           //code to execute on button press
         },
         child: Icon(Icons.send), //icon inside button
-      ),
+      ),*/
 
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       //floating action button position to right

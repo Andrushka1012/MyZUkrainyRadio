@@ -4,5 +4,7 @@ void main() => Test();
 
 class Test extends Prod {
   @override
-  String get streamUrl => 'https://online.nasze.fm:9443/stream';
+  String get uaStreamUrl => 'https://online.nasze.fm:9443/stream';
+  @override
+  String get plStreamUrl => 'https://online.nasze.fm:9443/stream';
 }

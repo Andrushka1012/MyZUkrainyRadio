@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/widgets/app_bottom_nav_bar.dart';
+import 'package:myzukrainy/core/presentation/widgets/mini_player/mini_player.dart';
 import 'package:myzukrainy/features/polish/features/home/presentation/bloc/nadajemy_home_cubit.dart';
 import 'package:myzukrainy/helpers/models/stations.dart';
 
@@ -28,21 +29,24 @@ class NadajemyPage extends KoinPage<NadajemyHomeCubit> {
   Widget buildPage(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<NadajemyHomeCubit, NadajemyHomeState>(builder: (ctx, s) {
-        return Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.white,
+        return SafeArea(
+          child: Column(
+            children: [
+              MiniPlayer(),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  color: Colors.white,
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.red,
+              Expanded(
+                flex: 1,
+                child: Container(
+                  color: Colors.red,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       }),
       bottomNavigationBar: AppBottomNavBar(
