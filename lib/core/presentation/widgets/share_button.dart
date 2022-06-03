@@ -5,16 +5,25 @@ import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/widgets/circle_button.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:myzukrainy/helpers/models/stations.dart';
 
-Future<void> _share() async {
+Future<void> _share(Station station) async {
+
   await FlutterShare.share(
-      title: LocaleKeys.myZUkrainy.tr(), text: LocaleKeys.shareMessage.tr(), chooserTitle: LocaleKeys.shareTitle.tr());
+    title: station.translation,
+    text: station.shareMessage,
+    chooserTitle: LocaleKeys.shareTitle.tr(),
+  );
 }
 
 class ShareButton extends StatelessWidget {
+  const ShareButton({required this.station});
+
+  final Station station;
+
   @override
   Widget build(BuildContext context) => RawMaterialButton(
-        onPressed: _share,
+        onPressed: () => _share(station),
         elevation: 2.0,
         fillColor: AppColors.darkGray,
         child: Icon(
@@ -28,6 +37,10 @@ class ShareButton extends StatelessWidget {
 }
 
 class CircleShareButton extends StatelessWidget {
+  const CircleShareButton({required this.station});
+
+  final Station station;
+
   @override
-  Widget build(BuildContext context) => CircleButton(icon: Icons.share, onTap: _share);
+  Widget build(BuildContext context) => CircleButton(icon: Icons.share, onTap: () => _share(station));
 }

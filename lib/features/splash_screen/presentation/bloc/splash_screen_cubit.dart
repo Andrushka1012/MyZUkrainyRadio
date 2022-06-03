@@ -19,13 +19,13 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
 
   Future init(Locale locale) async {
     await initAppServices();
-    await Future.delayed(Duration(milliseconds: 1500));
+    await Future.delayed(Duration(milliseconds: 1700));
 
     String selectedStationValue = _preferencesProvider.selectedStation.value;
 
     if (selectedStationValue.isEmpty) {
       if (locale.languageCode.toLowerCase().contains('pl')) {
-        selectedStationValue = Station.nadajemy.toString();
+        selectedStationValue = Station.aktywni.toString();
       } else {
         selectedStationValue = Station.myZUkrainy.toString();
       }

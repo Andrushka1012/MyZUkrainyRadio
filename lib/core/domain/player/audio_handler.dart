@@ -37,7 +37,7 @@ class AudioPlayerHandler extends BaseAudioHandler {
         item = _uaItem;
         await removeQueueItem(_plItem);
         break;
-      case Station.nadajemy:
+      case Station.aktywni:
         item = _plItem;
         await removeQueueItem(_uaItem);
         break;

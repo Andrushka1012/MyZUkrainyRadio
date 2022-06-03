@@ -10,6 +10,7 @@ class AppColors {
   static const redTart = Color.fromRGBO(251, 75, 78, 1);
   static const gray = Color.fromRGBO(134, 136, 146, 1);
   static const grayTrack = Color.fromRGBO(69, 71, 94, 1);
+  static const plPrimary = Color.fromRGBO(255, 178, 94, 1.0);
 
   static const background = white;
 

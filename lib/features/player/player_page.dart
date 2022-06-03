@@ -12,7 +12,7 @@ import 'package:myzukrainy/core/presentation/widgets/back_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/mini_player/cover_disc.dart';
 import 'package:myzukrainy/core/presentation/widgets/play_pause_button.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
-import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:myzukrainy/helpers/models/stations.dart';
 import 'package:myzukrainy/helpers/size_helpers.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:volume_controller/volume_controller.dart';
@@ -22,13 +22,17 @@ class PlayerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.headerColor,
-        body: PlayerForm(),
+    backgroundColor: AppColors.headerColor,
+        body: PlayerForm(
+          station: Station.myZUkrainy,
+        ),
       );
 }
 
 class PlayerForm extends StatelessWidget {
-  const PlayerForm({Key? key}) : super(key: key);
+  const PlayerForm({required this.station});
+
+  final Station station;
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +48,15 @@ class PlayerForm extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      CircleBackButton(),
+                      if (station == Station.myZUkrainy) CircleBackButton(),
                       Spacer(),
-                      CircleShareButton(),
+                      CircleShareButton(station: station,),
                     ],
                   ),
                   Center(
                     child: _VolumeControllerWithCover(
                       size: MediaQuery.of(context).size.width * 0.8,
+                      station: station,
                     ),
                   ),
                   FittedBox(
@@ -63,12 +68,12 @@ class PlayerForm extends StatelessWidget {
                         right: Dimens.spanBig,
                       ),
                       child: Text(
-                          LocaleKeys.myZUkrainy.tr(),
-                          style: AppTextStyles.headline,
-                        ),
+                        station.translation.tr(),
+                        style: AppTextStyles.headline,
+                      ),
                     ),
                   ),
-                  Text('🇵🇱 ❤️ 🇺🇦'),
+                  if (station == Station.myZUkrainy) Text('🇵🇱 ❤️ 🇺🇦'),
                   if (!MediaQuery.of(context).isSmallScreen) _StreamAnimation(),
                 ],
               ),
@@ -136,9 +141,14 @@ class _StreamAnimationState extends State<_StreamAnimation> with SingleTickerPro
 class _VolumeControllerWithCover extends StatefulWidget {
   static const _coverSizeRatio = 0.85;
 
-  const _VolumeControllerWithCover({required this.size, Key? key}) : super(key: key);
+  const _VolumeControllerWithCover({
+    required this.size,
+    required this.station,
+    Key? key,
+  }) : super(key: key);
 
   final double size;
+  final Station station;
 
   @override
   State<_VolumeControllerWithCover> createState() => _VolumeControllerWithCoverState();
@@ -183,6 +193,8 @@ class _VolumeControllerWithCoverState extends State<_VolumeControllerWithCover> 
                 height: widget.size * _VolumeControllerWithCover._coverSizeRatio,
                 child: CoverDisc(
                   size: widget.size * _VolumeControllerWithCover._coverSizeRatio,
+                  station: widget.station,
+                  withHero: widget.station == Station.myZUkrainy,
                 ),
               ),
             ),
@@ -203,17 +215,11 @@ class _VolumeControllerWithCoverState extends State<_VolumeControllerWithCover> 
                       trackWidth: 6,
                     ),
                     customColors: CustomSliderColors(
-                        dotColor: AppColors.white,
-                        dynamicGradient: false,
-                        trackColor: AppColors.grayTrack,
-                        progressBarColors: [
-                          Colors.blue,
-                          Colors.blue,
-                          Colors.blue,
-                          Colors.yellow,
-                          Colors.yellow,
-                          Colors.yellow,
-                        ]),
+                      dotColor: AppColors.white,
+                      dynamicGradient: false,
+                      trackColor: AppColors.grayTrack,
+                      progressBarColors: widget.station.colors,
+                    ),
                   ),
                   max: 1,
                   initialValue: _volumeLevel,

@@ -6,8 +6,8 @@ import 'package:myzukrainy/helpers/preferences/preferences_provider.dart';
 
 part 'nadajemy_home_state.dart';
 
-class NadajemyHomeCubit extends Cubit<NadajemyHomeState> {
-  NadajemyHomeCubit(
+class PrRadioHomeCubit extends Cubit<NadajemyHomeState> {
+  PrRadioHomeCubit(
     this._preferencesProvider,
     this._audioPlayerHandler,
   ) : super(NadajemyHomeInitial());
@@ -16,7 +16,7 @@ class NadajemyHomeCubit extends Cubit<NadajemyHomeState> {
   final AudioPlayerHandler _audioPlayerHandler;
 
   Future init() async {
-    _preferencesProvider.selectedStation.value = Station.nadajemy.toString();
-    await _audioPlayerHandler.init(Station.nadajemy);
+    _preferencesProvider.selectedStation.value = Station.aktywni.toString();
+    await _audioPlayerHandler.init(Station.aktywni);
   }
 }

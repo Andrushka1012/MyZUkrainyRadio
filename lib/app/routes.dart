@@ -13,10 +13,10 @@ final routes = <String, WidgetBuilder>{
 
 Route<dynamic>? getGenerateRoutePage(RouteSettings settings) {
   switch (settings.name) {
-    case NadajemyPage.routeName:
+    case PlRadioPage.routeName:
       return _circularPage(
         settings,
-        NadajemyPage(),
+        PlRadioPage(),
         formBottom: true,
         fromCenter: settings.arguments == true,
       );
@@ -54,10 +54,10 @@ Route _circularPage(
         var screenSize = MediaQuery.of(context).size;
         Offset center;
 
-        if (formBottom) {
-          center = Offset(screenSize.width - 100, screenSize.height - 40);
-        } else if (fromCenter) {
+        if (fromCenter) {
           center = Offset(screenSize.width / 2, screenSize.height / 2);
+        } else if (formBottom) {
+          center = Offset(screenSize.width - 100, screenSize.height - 40);
         } else {
           center = Offset(100, screenSize.height - 40);
         }

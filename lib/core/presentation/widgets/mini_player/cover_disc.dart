@@ -5,12 +5,19 @@ import 'package:koin_flutter/koin_flutter.dart';
 import 'package:myzukrainy/core/domain/player/player_controller.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/widgets/measure_size.dart';
+import 'package:myzukrainy/helpers/models/stations.dart';
 
 class CoverDisc extends StatefulWidget {
 
   final double? size;
+  final Station station;
+  final bool withHero;
 
-  const CoverDisc({this.size});
+  const CoverDisc({
+    required this.station,
+    this.size,
+    this.withHero = true,
+  });
 
   @override
   State<CoverDisc> createState() => _CoverDiscState();
@@ -41,29 +48,35 @@ class _CoverDiscState extends State<CoverDisc> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: 'cover',
-      createRectTween: (begin, end) => MaterialRectCenterArcTween(begin: begin, end: end),
-      child: RotationTransition(
-        turns: Tween(begin: 0.0, end: 1.0).animate(_animationController),
-        child: MeasureSize(
-          onChange: (size) {
-            setState(() {
-              this.size = size;
-            });
-          },
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(250.0),
+    final child = RotationTransition(
+      turns: Tween(begin: 0.0, end: 1.0).animate(_animationController),
+      child: MeasureSize(
+        onChange: (size) {
+          setState(() {
+            this.size = size;
+          });
+        },
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(250.0),
+                  child: Container(
+                    color: Colors.white,
                     child: Image(
-                      image: AssetImage('assets/images/cover_white.jpg'),
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        widget.station == Station.myZUkrainy
+                            ? 'assets/images/cover_white.jpg'
+                            : 'assets/images/cover_pl.jpg',
+                      ),
                     ),
                   ),
                 ),
+              ),
+              if (widget.station == Station.myZUkrainy) ...[
                 Align(
                   alignment: Alignment.center,
                   child: _CircleItem(
@@ -89,24 +102,32 @@ class _CoverDiscState extends State<CoverDisc> with SingleTickerProviderStateMix
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: _CircleBorderItem(
-                    radius: radius / 1.06,
-                    color: AppColors.mainPageHeaderColorAlpha1,
-                    width: radius / 70,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
                   child: _CircleItem(
                     radius: radius / 6.9,
                     color: AppColors.headerColor,
                   ),
                 ),
               ],
-            ),
+              Align(
+                alignment: Alignment.center,
+                child: _CircleBorderItem(
+                  radius: radius / 1.06,
+                  color: AppColors.mainPageHeaderColorAlpha1,
+                  width: radius / 70,
+                ),
+              ),
+            ],
           ),
         ),
       ),
+    );
+
+    if (!widget.withHero) return child;
+
+    return Hero(
+      tag: 'cover',
+      createRectTween: (begin, end) => MaterialRectCenterArcTween(begin: begin, end: end),
+      child: child,
     );
   }
 

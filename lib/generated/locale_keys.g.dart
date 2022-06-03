@@ -6,6 +6,7 @@ abstract class  LocaleKeys {
   static const goodAfternoon = 'goodAfternoon';
   static const goodEvening = 'goodEvening';
   static const shareMessage = 'shareMessage';
+  static const shareMessagePl = 'shareMessagePl';
   static const shareTitle = 'shareTitle';
   static const radioOfflineMessage = 'radioOfflineMessage';
   static const noInternetMessage = 'noInternetMessage';

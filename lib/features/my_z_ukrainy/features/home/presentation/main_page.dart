@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 import 'package:myzukrainy/app/config/app_config.dart';
 import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
@@ -72,7 +74,7 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
                                 children: [
                                   HomePageIntroText(),
                                   Align(
-                                    child: ShareButton(),
+                                    child: ShareButton(station: Station.myZUkrainy,),
                                     alignment: MediaQuery.of(context).isSmallScreen
                                         ? Alignment.topRight
                                         : Alignment.centerRight,
@@ -97,13 +99,11 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
           ],
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primary,
-        onPressed: () {
-          //code to execute on button press
-        },
+        onPressed: _askQuestion,
         child: Icon(Icons.send), //icon inside button
-      ),*/
+      ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       //floating action button position to right
@@ -111,6 +111,24 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
         station: Station.myZUkrainy,
       ),
     );
+  }
+
+  Future _askQuestion() async {
+    final address = 'andreymakarenko222@gmail.com';
+
+    final message =Message()
+      ..from = Address('radiomyzukrainy@yahoo.com', 'Andrushka')
+      ..recipients = [address]
+      ..subject = 'Question'
+      ..text = 'Some question';
+
+    try {
+      final result = await send(message, yahoo('radiomyzukrainy@yahoo.com', 'rad1oW0ln@'));
+
+      print(result);
+    } catch(e) {
+      print(e);
+    }
   }
 }
 

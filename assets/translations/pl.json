@@ -3,7 +3,8 @@
   "goodMorning": "Dzień dobry",
   "goodAfternoon": "Dzień dobry",
   "goodEvening": "Dobry wieczór",
-  "shareMessage": "Słucham Radia Moja Ukraina za pomocą aplikacji: https://play.google.com/store/apps/details?id=com.cis.myzukrainy\nTeż na stronie: https://www.myzukrainy.pl/\nNasze konta w mediach społecznościowych:\nhttps://www.facebook.com/radio.myzukrainy\nradio@myzukrainy.pl",
+  "shareMessage": "Słucham Radia My z Ukrainy za pomocą aplikacji: https://play.google.com/store/apps/details?id=com.cis.myzukrainy\nTeż na stronie: https://www.myzukrainy.pl/\nNasze konta w mediach społecznościowych:\nhttps://www.facebook.com/radio.myzukrainy\nradio@myzukrainy.pl",
+  "shareMessagePl": "Słucham Radio Aktywni za pomocą aplikacji: https://play.google.com/store/apps/details?id=com.cis.myzukrainy",
   "shareTitle": "Podziel się nami z wszystkimi",
   "radioOfflineMessage": "Niestety obecnie nie ma połączenia z naszą stacją radiową. Spróbuj ponownie później.",
   "noInternetMessage": "Wystąpiły problemy z połączeniem. Sprawdź, czy masz dostęp do Internetu.",
@@ -12,5 +13,5 @@
   "newsTitle": "Ostatnie wiadomości",
   "podcastsTitle": "Ostatnie audycje",
   "showMore": "Więcej",
-  "nadajamy": "Nadajemy"
+  "nadajamy": "Radio Aktywni"
 }

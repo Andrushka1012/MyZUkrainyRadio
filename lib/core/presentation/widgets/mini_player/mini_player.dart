@@ -7,6 +7,7 @@ import 'package:myzukrainy/core/presentation/widgets/mini_player/cover_disc.dart
 import 'package:myzukrainy/core/presentation/widgets/play_pause_button.dart';
 import 'package:myzukrainy/features/player/player_page.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
+import 'package:myzukrainy/helpers/models/stations.dart';
 
 class MiniPlayer extends StatelessWidget {
 
@@ -31,7 +32,9 @@ class MiniPlayer extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        CoverDisc(),
+                        CoverDisc(
+                          station: Station.myZUkrainy,
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(
                             left: Dimens.spanSmall,

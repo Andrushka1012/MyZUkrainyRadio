@@ -4,6 +4,7 @@
   "goodAfternoon": "Доброго дня",
   "goodEvening": "Доброго вечора",
   "shareMessage": "Я слухаю радіо Ми з України користуючись додатком для андроїд: https://play.google.com/store/apps/details?id=com.cis.myzukrainy\nта на сайті: https://www.myzukrainy.pl/\nНаші соціальні аккаунти:\nhttps://www.facebook.com/radio.myzukrainy\nradio@myzukrainy.pl",
+  "shareMessagePl": "Я слухаю радіо Aktywni користуючись додатком для андроїд: https://play.google.com/store/apps/details?id=com.cis.myzukrainy",
   "shareTitle": "Поділися нами зі всіма",
   "radioOfflineMessage": "На жаль зараз відсутній зв'язок з нашим радіо. Спробуйте пізніше.",
   "noInternetMessage": "Виникли проблеми з підключеннням. Перевірте чи маєте доступ до інтернету.",
@@ -12,5 +13,5 @@
   "newsTitle": "Останні новини",
   "podcastsTitle": "Останні подкасти",
   "showMore": "Більше",
-  "nadajamy": "Nadajemy"
+  "nadajamy": "Radio Aktywni"
 }

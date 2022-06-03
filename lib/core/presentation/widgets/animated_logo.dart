@@ -13,10 +13,9 @@ class _AnimatedLogoState extends State<AnimatedLogo> {
   void initState() {
     super.initState();
 
-
     Future.delayed(Duration(milliseconds: 500)).then((value) {
       setState(() {
-        size = MediaQuery.of(context).size.width / 1.5;
+        size = MediaQuery.of(context).size.width / 1.1;
       });
     });
   }
@@ -25,10 +24,16 @@ class _AnimatedLogoState extends State<AnimatedLogo> {
   Widget build(BuildContext context) {
     size ??= MediaQuery.of(context).size.width / 3;
 
-    return AnimatedSize(
+    return AnimatedContainer(
       curve: Curves.easeIn,
-      duration: const Duration(seconds: 1),
-      child: Container(color: Colors.red, height: size, width: size,),
+      height: size,
+      width: size,
+      duration: const Duration(milliseconds: 1200),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+        'assets/images/cover_white.jpg',
+      ))),
     );
   }
 }

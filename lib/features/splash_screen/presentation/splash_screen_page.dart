@@ -50,8 +50,8 @@ class SplashScreenPage extends KoinPage<SplashScreenCubit> {
           case Station.myZUkrainy:
             Navigator.of(context).pushReplacementNamed(MyZUkrainyHomePage.routeName, arguments: true);
             break;
-          case Station.nadajemy:
-            Navigator.of(context).pushReplacementNamed(NadajemyPage.routeName, arguments: true);
+          case Station.aktywni:
+            Navigator.of(context).pushReplacementNamed(PlRadioPage.routeName, arguments: true);
             break;
         }
       },

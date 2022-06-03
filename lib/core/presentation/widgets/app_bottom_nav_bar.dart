@@ -51,13 +51,13 @@ class AppBottomNavBar extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    icon: Icon(
-                      Icons.people,
-                      color: station != Station.nadajemy ? Colors.white : Colors.yellow,
+                    icon: SvgPicture.asset(
+                      'assets/images/pl_logo.svg',
+                      color: station != Station.aktywni ? Colors.white : AppColors.plPrimary,
                     ),
                     onPressed: () {
-                      if (station != Station.nadajemy) {
-                        Navigator.of(context).pushReplacementNamed(NadajemyPage.routeName);
+                      if (station != Station.aktywni) {
+                        Navigator.of(context).pushReplacementNamed(PlRadioPage.routeName);
                       }
                     },
                   ),
