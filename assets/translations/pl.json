@@ -13,5 +13,9 @@
   "newsTitle": "Ostatnie wiadomości",
   "podcastsTitle": "Ostatnie audycje",
   "showMore": "Więcej",
-  "nadajamy": "Radio Aktywni"
+  "nadajamy": "Radio Aktywni",
+  "notificationsMessage": "Przypominać o audycjach",
+  "notificationsEnabledMessage": "Będziemy informować Cię o naszych audycjach :)",
+  "notificationsDisabledMessage": "Nie będziesz otrzymywać powiadomień o naszych transmisjach. Jesteśmy smutni :("
+
 }

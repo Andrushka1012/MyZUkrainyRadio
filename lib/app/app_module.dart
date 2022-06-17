@@ -3,6 +3,7 @@ import 'package:koin/koin.dart';
 import 'package:myzukrainy/app/config/app_config.dart';
 import 'package:myzukrainy/core/domain/player/player_controller.dart';
 import 'package:myzukrainy/helpers/app_connectivity.dart';
+import 'package:myzukrainy/helpers/notifications_utlis.dart';
 import 'package:myzukrainy/helpers/preferences/preferences_provider.dart';
 
 final appModule = Module()
@@ -12,6 +13,7 @@ final appModule = Module()
       ))
   ..single((scope) => AppConnectivity())
   ..single((scope) => PreferencesProvider())
+  ..single((scope) => NotificationsUtils())
   ..single((scope) => Dio(
         BaseOptions(
           baseUrl: AppConfig.value.baseUrl,

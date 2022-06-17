@@ -13,5 +13,8 @@
   "newsTitle": "Останні новини",
   "podcastsTitle": "Останні подкасти",
   "showMore": "Більше",
-  "nadajamy": "Radio Aktywni"
+  "nadajamy": "Radio Aktywni",
+  "notificationsMessage": "Повідомляти о ефірах",
+  "notificationsEnabledMessage": "Ми будемо повідомляти зарані Вас о наших ефірах :)",
+  "notificationsDisabledMessage": "Ви не будете отримувати повідомлення о наших ефірах. Нам сумно :("
 }

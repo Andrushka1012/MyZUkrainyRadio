@@ -7,4 +7,5 @@ final myZUkrainyPresentationModule = Module()
         scope.get(),
         scope.get(),
         scope.get(),
+        scope.get(),
       ));

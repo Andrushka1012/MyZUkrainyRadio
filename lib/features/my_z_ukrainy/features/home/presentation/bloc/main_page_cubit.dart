@@ -6,6 +6,7 @@ import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_post.d
 import 'package:myzukrainy/features/my_z_ukrainy/domain/use_cases/wordpress_news_use_case.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/domain/use_cases/wordpress_podcasts_use_case.dart';
 import 'package:myzukrainy/helpers/models/stations.dart';
+import 'package:myzukrainy/helpers/notifications_utlis.dart';
 import 'package:myzukrainy/helpers/preferences/preferences_provider.dart';
 
 part 'main_page_cubit.freezed.dart';
@@ -17,12 +18,14 @@ class MainPageCubit extends Cubit<MainPageState> {
     this._fetchPodcasts,
     this._preferencesProvider,
     this._audioPlayerHandler,
+    this._notificationsUtils,
   ) : super(MainPageState.loading());
 
   final FetchMyZUkrainyNews _fetchNews;
   final FetchMyZUkrainyPodcasts _fetchPodcasts;
   final PreferencesProvider _preferencesProvider;
   final AudioPlayerHandler _audioPlayerHandler;
+  final NotificationsUtils _notificationsUtils;
 
   Future init() async {
     emit(MainPageState.loading());
@@ -65,9 +68,22 @@ class MainPageCubit extends Cubit<MainPageState> {
       emit(MainPageState.ready(
         posts,
         podcasts,
+        _preferencesProvider.uaPushesEnabled.value,
       ));
     } else {
       emit(MainPageState.empty());
     }
+  }
+
+  Future changeNotificationsState(bool isEnabled) async {
+    final previousState = state;
+
+    if (previousState is! _Ready) return;
+
+    await _notificationsUtils.setUaTopicEnabled(isEnabled);
+
+    _preferencesProvider.uaPushesEnabled.value = isEnabled;
+    emit(MainPageState.notify(isEnabled));
+    emit(previousState.copyWith.call(notificationsEnabled: isEnabled));
   }
 }

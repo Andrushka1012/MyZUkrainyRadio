@@ -16,5 +16,8 @@ abstract class  LocaleKeys {
   static const podcastsTitle = 'podcastsTitle';
   static const showMore = 'showMore';
   static const nadajamy = 'nadajamy';
+  static const notificationsMessage = 'notificationsMessage';
+  static const notificationsEnabledMessage = 'notificationsEnabledMessage';
+  static const notificationsDisabledMessage = 'notificationsDisabledMessage';
 
 }

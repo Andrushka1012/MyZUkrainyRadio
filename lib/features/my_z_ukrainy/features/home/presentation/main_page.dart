@@ -10,7 +10,6 @@ import 'package:myzukrainy/core/presentation/base/navigation/koin_page.dart';
 import 'package:myzukrainy/core/presentation/styles/colors.dart';
 import 'package:myzukrainy/core/presentation/styles/dimens.dart';
 import 'package:myzukrainy/core/presentation/styles/text_styles.dart';
-import 'package:myzukrainy/core/presentation/widgets/app_bottom_nav_bar.dart';
 import 'package:myzukrainy/core/presentation/widgets/fadeIn.dart';
 import 'package:myzukrainy/core/presentation/widgets/podcastItem.dart';
 import 'package:myzukrainy/core/presentation/widgets/share_button.dart';
@@ -21,6 +20,7 @@ import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_podcas
 import 'package:myzukrainy/features/my_z_ukrainy/domain/models/word_press_post.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/bloc/main_page_cubit.dart';
 import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/widgets/home_page_intro_text.dart';
+import 'package:myzukrainy/features/my_z_ukrainy/features/home/presentation/widgets/notifications_topic_switch.dart';
 import 'package:myzukrainy/generated/locale_keys.g.dart';
 import 'package:myzukrainy/helpers/models/stations.dart';
 import 'package:myzukrainy/helpers/size_helpers.dart';
@@ -99,7 +99,7 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primary,
         onPressed: _askQuestion,
         child: Icon(Icons.send), //icon inside button
@@ -109,7 +109,7 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
       //floating action button position to right
       bottomNavigationBar: AppBottomNavBar(
         station: Station.myZUkrainy,
-      ),
+      ),*/
     );
   }
 
@@ -133,11 +133,23 @@ class MyZUkrainyHomePage extends KoinPage<MainPageCubit> {
 }
 
 class MainForm extends StatelessWidget {
-  Widget _getContent(BuildContext context, List<WordPressPost> posts, List<WordPressPodcast> podcasts) =>
+  Widget _getContent(
+    BuildContext context,
+    List<WordPressPost> posts,
+    List<WordPressPodcast> podcasts,
+    bool isNotificationsEnabled,
+  ) =>
       FadeIn(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
+            NotificationsTopicSwitch(
+              isEnabled: isNotificationsEnabled,
+              onChanged: (isEnabled) {
+                final bloc = BlocProvider.of<MainPageCubit>(context);
+                bloc.changeNotificationsState(isEnabled);
+              },
+            ),
             if (podcasts.isNotEmpty) ...[
               Center(
                 child: Padding(
@@ -238,7 +250,7 @@ class MainForm extends StatelessWidget {
         listener: _handleEvents,
         buildWhen: (_, current) => current.maybeWhen(
           loading: () => true,
-          ready: (_, __) => true,
+          ready: (_, __, ___) => true,
           orElse: () => false,
         ),
         builder: (ctx, state) {
@@ -246,7 +258,8 @@ class MainForm extends StatelessWidget {
             loading: () => Center(
               child: CircularProgressIndicator(),
             ),
-            ready: (posts, podcasts) => _getContent(context, posts, podcasts),
+            ready: (posts, podcasts, isNotificationsEnabled) =>
+                _getContent(context, posts, podcasts, isNotificationsEnabled),
             empty: () => SomethingWentWrongRetry(
               onRetry: () {
                 BlocProvider.of<MainPageCubit>(context).init();
@@ -259,6 +272,7 @@ class MainForm extends StatelessWidget {
 
   void _handleEvents(BuildContext context, MainPageState state) {
     state.whenOrNull(
+      notify: (isNotificationsEnabled) => _handleNotificationsEvents(context, isNotificationsEnabled),
       error: (_) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -269,6 +283,19 @@ class MainForm extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  _handleNotificationsEvents(BuildContext context, bool notificationsEnabled) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: notificationsEnabled ? AppColors.primary : AppColors.redTart,
+        content: Text(
+          notificationsEnabled
+              ? LocaleKeys.notificationsEnabledMessage.tr()
+              : LocaleKeys.notificationsDisabledMessage.tr(),
+        ),
+      ),
     );
   }
 }

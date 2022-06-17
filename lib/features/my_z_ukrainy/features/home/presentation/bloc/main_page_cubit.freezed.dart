@@ -20,30 +20,33 @@ mixin _$MainPageState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)
+    required TResult Function(List<WordPressPost> posts,
+            List<WordPressPodcast> podcasts, bool notificationsEnabled)
         ready,
     required TResult Function(dynamic error) error,
+    required TResult Function(bool notificationsEnabled) notify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +56,7 @@ mixin _$MainPageState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Ready value) ready,
     required TResult Function(_Error value) error,
+    required TResult Function(_Notify value) notify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +65,7 @@ mixin _$MainPageState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$MainPageState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,10 +137,11 @@ class _$_Empty implements _Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)
+    required TResult Function(List<WordPressPost> posts,
+            List<WordPressPodcast> podcasts, bool notificationsEnabled)
         ready,
     required TResult Function(dynamic error) error,
+    required TResult Function(bool notificationsEnabled) notify,
   }) {
     return empty();
   }
@@ -144,10 +151,11 @@ class _$_Empty implements _Empty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
   }) {
     return empty?.call();
   }
@@ -157,10 +165,11 @@ class _$_Empty implements _Empty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -176,6 +185,7 @@ class _$_Empty implements _Empty {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Ready value) ready,
     required TResult Function(_Error value) error,
+    required TResult Function(_Notify value) notify,
   }) {
     return empty(this);
   }
@@ -187,6 +197,7 @@ class _$_Empty implements _Empty {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
   }) {
     return empty?.call(this);
   }
@@ -198,6 +209,7 @@ class _$_Empty implements _Empty {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -251,10 +263,11 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)
+    required TResult Function(List<WordPressPost> posts,
+            List<WordPressPodcast> podcasts, bool notificationsEnabled)
         ready,
     required TResult Function(dynamic error) error,
+    required TResult Function(bool notificationsEnabled) notify,
   }) {
     return loading();
   }
@@ -264,10 +277,11 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
   }) {
     return loading?.call();
   }
@@ -277,10 +291,11 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -296,6 +311,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Ready value) ready,
     required TResult Function(_Error value) error,
+    required TResult Function(_Notify value) notify,
   }) {
     return loading(this);
   }
@@ -307,6 +323,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
   }) {
     return loading?.call(this);
   }
@@ -318,6 +335,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -335,7 +353,10 @@ abstract class _Loading implements MainPageState {
 abstract class _$ReadyCopyWith<$Res> {
   factory _$ReadyCopyWith(_Ready value, $Res Function(_Ready) then) =
       __$ReadyCopyWithImpl<$Res>;
-  $Res call({List<WordPressPost> posts, List<WordPressPodcast> podcasts});
+  $Res call(
+      {List<WordPressPost> posts,
+      List<WordPressPodcast> podcasts,
+      bool notificationsEnabled});
 }
 
 /// @nodoc
@@ -351,6 +372,7 @@ class __$ReadyCopyWithImpl<$Res> extends _$MainPageStateCopyWithImpl<$Res>
   $Res call({
     Object? posts = freezed,
     Object? podcasts = freezed,
+    Object? notificationsEnabled = freezed,
   }) {
     return _then(_Ready(
       posts == freezed
@@ -361,6 +383,10 @@ class __$ReadyCopyWithImpl<$Res> extends _$MainPageStateCopyWithImpl<$Res>
           ? _value.podcasts
           : podcasts // ignore: cast_nullable_to_non_nullable
               as List<WordPressPodcast>,
+      notificationsEnabled == freezed
+          ? _value.notificationsEnabled
+          : notificationsEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -368,8 +394,8 @@ class __$ReadyCopyWithImpl<$Res> extends _$MainPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Ready implements _Ready {
-  const _$_Ready(
-      final List<WordPressPost> posts, final List<WordPressPodcast> podcasts)
+  const _$_Ready(final List<WordPressPost> posts,
+      final List<WordPressPodcast> podcasts, this.notificationsEnabled)
       : _posts = posts,
         _podcasts = podcasts;
 
@@ -388,8 +414,11 @@ class _$_Ready implements _Ready {
   }
 
   @override
+  final bool notificationsEnabled;
+
+  @override
   String toString() {
-    return 'MainPageState.ready(posts: $posts, podcasts: $podcasts)';
+    return 'MainPageState.ready(posts: $posts, podcasts: $podcasts, notificationsEnabled: $notificationsEnabled)';
   }
 
   @override
@@ -398,14 +427,17 @@ class _$_Ready implements _Ready {
         (other.runtimeType == runtimeType &&
             other is _Ready &&
             const DeepCollectionEquality().equals(other.posts, posts) &&
-            const DeepCollectionEquality().equals(other.podcasts, podcasts));
+            const DeepCollectionEquality().equals(other.podcasts, podcasts) &&
+            const DeepCollectionEquality()
+                .equals(other.notificationsEnabled, notificationsEnabled));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(posts),
-      const DeepCollectionEquality().hash(podcasts));
+      const DeepCollectionEquality().hash(podcasts),
+      const DeepCollectionEquality().hash(notificationsEnabled));
 
   @JsonKey(ignore: true)
   @override
@@ -417,12 +449,13 @@ class _$_Ready implements _Ready {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)
+    required TResult Function(List<WordPressPost> posts,
+            List<WordPressPodcast> podcasts, bool notificationsEnabled)
         ready,
     required TResult Function(dynamic error) error,
+    required TResult Function(bool notificationsEnabled) notify,
   }) {
-    return ready(posts, podcasts);
+    return ready(posts, podcasts, notificationsEnabled);
   }
 
   @override
@@ -430,12 +463,13 @@ class _$_Ready implements _Ready {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
   }) {
-    return ready?.call(posts, podcasts);
+    return ready?.call(posts, podcasts, notificationsEnabled);
   }
 
   @override
@@ -443,14 +477,15 @@ class _$_Ready implements _Ready {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
     required TResult orElse(),
   }) {
     if (ready != null) {
-      return ready(posts, podcasts);
+      return ready(posts, podcasts, notificationsEnabled);
     }
     return orElse();
   }
@@ -462,6 +497,7 @@ class _$_Ready implements _Ready {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Ready value) ready,
     required TResult Function(_Error value) error,
+    required TResult Function(_Notify value) notify,
   }) {
     return ready(this);
   }
@@ -473,6 +509,7 @@ class _$_Ready implements _Ready {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
   }) {
     return ready?.call(this);
   }
@@ -484,6 +521,7 @@ class _$_Ready implements _Ready {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -494,11 +532,14 @@ class _$_Ready implements _Ready {
 }
 
 abstract class _Ready implements MainPageState {
-  const factory _Ready(final List<WordPressPost> posts,
-      final List<WordPressPodcast> podcasts) = _$_Ready;
+  const factory _Ready(
+      final List<WordPressPost> posts,
+      final List<WordPressPodcast> podcasts,
+      final bool notificationsEnabled) = _$_Ready;
 
   List<WordPressPost> get posts => throw _privateConstructorUsedError;
   List<WordPressPodcast> get podcasts => throw _privateConstructorUsedError;
+  bool get notificationsEnabled => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ReadyCopyWith<_Ready> get copyWith => throw _privateConstructorUsedError;
 }
@@ -567,10 +608,11 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)
+    required TResult Function(List<WordPressPost> posts,
+            List<WordPressPodcast> podcasts, bool notificationsEnabled)
         ready,
     required TResult Function(dynamic error) error,
+    required TResult Function(bool notificationsEnabled) notify,
   }) {
     return error(this.error);
   }
@@ -580,10 +622,11 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
   }) {
     return error?.call(this.error);
   }
@@ -593,10 +636,11 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(
-            List<WordPressPost> posts, List<WordPressPodcast> podcasts)?
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
         ready,
     TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -612,6 +656,7 @@ class _$_Error implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Ready value) ready,
     required TResult Function(_Error value) error,
+    required TResult Function(_Notify value) notify,
   }) {
     return error(this);
   }
@@ -623,6 +668,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
   }) {
     return error?.call(this);
   }
@@ -634,6 +680,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Ready value)? ready,
     TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -649,4 +696,159 @@ abstract class _Error implements MainPageState {
   dynamic get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$NotifyCopyWith<$Res> {
+  factory _$NotifyCopyWith(_Notify value, $Res Function(_Notify) then) =
+      __$NotifyCopyWithImpl<$Res>;
+  $Res call({bool notificationsEnabled});
+}
+
+/// @nodoc
+class __$NotifyCopyWithImpl<$Res> extends _$MainPageStateCopyWithImpl<$Res>
+    implements _$NotifyCopyWith<$Res> {
+  __$NotifyCopyWithImpl(_Notify _value, $Res Function(_Notify) _then)
+      : super(_value, (v) => _then(v as _Notify));
+
+  @override
+  _Notify get _value => super._value as _Notify;
+
+  @override
+  $Res call({
+    Object? notificationsEnabled = freezed,
+  }) {
+    return _then(_Notify(
+      notificationsEnabled == freezed
+          ? _value.notificationsEnabled
+          : notificationsEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Notify implements _Notify {
+  const _$_Notify(this.notificationsEnabled);
+
+  @override
+  final bool notificationsEnabled;
+
+  @override
+  String toString() {
+    return 'MainPageState.notify(notificationsEnabled: $notificationsEnabled)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Notify &&
+            const DeepCollectionEquality()
+                .equals(other.notificationsEnabled, notificationsEnabled));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(notificationsEnabled));
+
+  @JsonKey(ignore: true)
+  @override
+  _$NotifyCopyWith<_Notify> get copyWith =>
+      __$NotifyCopyWithImpl<_Notify>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() loading,
+    required TResult Function(List<WordPressPost> posts,
+            List<WordPressPodcast> podcasts, bool notificationsEnabled)
+        ready,
+    required TResult Function(dynamic error) error,
+    required TResult Function(bool notificationsEnabled) notify,
+  }) {
+    return notify(notificationsEnabled);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
+        ready,
+    TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
+  }) {
+    return notify?.call(notificationsEnabled);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function(List<WordPressPost> posts, List<WordPressPodcast> podcasts,
+            bool notificationsEnabled)?
+        ready,
+    TResult Function(dynamic error)? error,
+    TResult Function(bool notificationsEnabled)? notify,
+    required TResult orElse(),
+  }) {
+    if (notify != null) {
+      return notify(notificationsEnabled);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Ready value) ready,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Notify value) notify,
+  }) {
+    return notify(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Ready value)? ready,
+    TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
+  }) {
+    return notify?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Ready value)? ready,
+    TResult Function(_Error value)? error,
+    TResult Function(_Notify value)? notify,
+    required TResult orElse(),
+  }) {
+    if (notify != null) {
+      return notify(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Notify implements MainPageState {
+  const factory _Notify(final bool notificationsEnabled) = _$_Notify;
+
+  bool get notificationsEnabled => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$NotifyCopyWith<_Notify> get copyWith => throw _privateConstructorUsedError;
 }

@@ -4,4 +4,5 @@ import 'package:myzukrainy/features/splash_screen/presentation/bloc/splash_scree
 final splashScreenModule = Module()
   ..factory((scope) => SplashScreenCubit(
         scope.get(),
+        scope.get(),
       ));
