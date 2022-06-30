@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/parser.dart';
 
 class AnimatedLogo extends StatefulWidget {
   @override
@@ -29,12 +31,8 @@ class _AnimatedLogoState extends State<AnimatedLogo> {
       height: size,
       width: size,
       duration: const Duration(milliseconds: 900),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            'assets/images/ic_launcher.png',
-          ),
-        ),
+      child: SvgPicture.asset(
+        'assets/images/ic_launcher.svg',
       ),
     );
   }
