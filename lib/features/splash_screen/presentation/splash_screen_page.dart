@@ -21,12 +21,12 @@ class SplashScreenPage extends KoinPage<SplashScreenCubit> {
   @override
   Widget buildPage(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: AppColors.white,
-      systemNavigationBarColor: AppColors.white,
+      statusBarColor: AppColors.headerColor,
+      systemNavigationBarColor: AppColors.headerColor,
     ));
 
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.headerColor,
       body: BlocListener<SplashScreenCubit, SplashScreenState>(
         listener: _handleEvents,
         child: InteractiveViewer(
